@@ -7,17 +7,28 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.4.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@openzeppelin/contracts": "^4.5.0",
+    "@openzeppelin/test-helpers": "^0.5.15",
     "@tailwindcss/forms": "^0.4.0",
+    "@truffle/hdwallet-provider": "^2.0.6",
     "aos": "^3.0.0-beta.6",
+    "big-number": "^2.0.0",
+    "dotenv": "^16.0.0",
     "ethers": "^5.6.9",
+    "multi-sol-verifier": "^1.0.1",
     "swiper": "^6.8.4",
+    "truffle-hdwallet-provider-privkey": "^0.3.0",
     "vue": "^3.2.20",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^1.0.1",
     "@vitejs/plugin-vue": "^2.1.0",
     "@vue/compiler-sfc": "^3.2.20",
     "autoprefixer": "10.4.5",
+    "hardhat": "^2.10.0",
     "postcss": "^8.3.9",
     "sass": "^1.43.2",
     "tailwindcss": "^3.0.2",
