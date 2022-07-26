@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
 import { currentAccount, provider } from '../useWallet'
 
-import abi from '../../abi/alerts.json'
+import abi from '../../abis/alerts.json'
 
 const Contract = computed(() => {
   return new ethers.Contract(
