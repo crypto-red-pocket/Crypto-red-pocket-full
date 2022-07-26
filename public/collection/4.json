@@ -1,0 +1,16 @@
+{
+  "description": "Support people's health harm reduction by minting a unique NFT that helps alert adulterated MDMA (Ecstasy) in festivals and events", 
+  "external_url": "https://famous-raindrop-74145c.netlify.app/nft-collection", 
+  "image": "https://gateway.pinata.cloud/ipfs/QmTuxXq8GWWdFbji3nG3oHfL92nPwkdicvvfps7aSx6BJE/4.png", 
+  "name": "Ecstasy Pill #4",
+  "attributes": [ 
+      {
+          "trait_type": "Pill", 
+          "value": "MDMA"
+      },
+      {
+          "trait_type": "Form", 
+          "value": "Skull"
+      }
+  ] 
+}
