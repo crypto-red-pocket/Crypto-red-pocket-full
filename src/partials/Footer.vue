@@ -38,10 +38,22 @@
             </div>
 
             <div class="text-sm">
-              <h6 class="font-medium uppercase mb-2">Contracts</h6>
+              <h6 class="font-medium uppercase mb-2">Contract</h6>
               <ul>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Red Envelope</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Rinkeby</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Neon</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Chronos</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Celos</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Gnosis</a>
                 </li>
               </ul>
             </div>
@@ -55,6 +67,15 @@
                 </li>
                 <li class="mb-1">
                   <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/juan-david-polanco-rojas-6a06aa12a/">Juan David Polanco</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/shalupanwar/">Shalu Panwar</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/raushansharma/">Raushan Sharma</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/eladmi/">Elad Mintzer</a>
                 </li>
               </ul>
             </div>
