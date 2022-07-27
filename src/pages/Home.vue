@@ -13,14 +13,10 @@
       </div>
 
       <!-- Page sections -->
-      <HeroHome @on-avatar-minted="fetchOwnedCollection"/>
+      <HeroHome />
 
       <Transition name="fade">
-        <Carousel
-          v-if="currentAccount && collection && collection[0]"
-          :show-info="false"
-          :pills="collection"
-        />
+        
       </Transition>
 
       <TestimonialsBlocks />
@@ -41,33 +37,14 @@ import { currentAccount } from './../composables/useWallet'
 import Header from './../partials/Header.vue'
 import PageIllustration from './../partials/PageIllustration.vue'
 import HeroHome from './../partials/HeroHome.vue'
-import Carousel from './../partials/Carousel.vue'
 import TestimonialsBlocks from './../partials/TestimonialsBlocks.vue'
 import Footer from './../partials/Footer.vue'
-
-const collection = ref([])
-
-async function fetchOwnedCollection () {
-  collection.value = []
-  await fetch(`https://deep-index.moralis.io/api/v2/${currentAccount.value}/nft?chain=rinkeby&format=decimal&token_addresses=${import.meta.env.VITE_ENVELOPES_CONTRACT}`, {
-    method: 'GET', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-KEY': 'kcxhRlOE3tiqR8nQHtXfWd1Rew9PSvTcGj2sP6CL7Hl1sJPsP4CxofWlDDRuu6fK'
-    },
-  })
-    .then(response => response.json())
-    .then(data => {
-      // console.log('Success:', data);
-      collection.value = data.result
-    })
-}
 
 watch(
   [currentAccount],
   () => {
     if(currentAccount.value) {
-      fetchOwnedCollection()
+
     }
   },
   { immediate: true }
