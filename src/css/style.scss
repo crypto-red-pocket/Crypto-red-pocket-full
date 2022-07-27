@@ -40,6 +40,10 @@ body {
 a {
     @apply font-semibold
 }
+
+.base-btn {
+    @apply ease-in-out duration-300 bg-gradient-to-tr from-lightViolet to-lightRed text-darkViolet font-semibold w-max px-10 py-2 rounded-lg hover:px-12 
+}
   
 ::-webkit-scrollbar {
     display: none;

@@ -15,20 +15,20 @@
               architecto aliquam voluptas. Quasi, eos? Animi quod perferendis
               exercitationem iste molestias tempore ad voluptatum.
             </p>
-            <div class="flex flex-col sm:flex-row justify-start max-w-sm mx-auto sm:max-w-md md:mx-0 pt-4">
+            <div class="flex flex-col sm:flex-row justify-start max-w-sm mx-auto sm:max-w-md md:mx-0 pt-6">
               <ConnectButton
                 v-if="!currentAccount"
-                button-class="px-8 py-4 text-xl text-white bg-teal-500 hover:bg-teal-400 rounded-lg"
+                button-class="px-8 py-4 text-xl base-btn"
               />
               <BaseButton
                 v-else-if="!isLoading"
                 @click="create"
-                button-class="px-8 py-4 text-xl text-white bg-teal-500 hover:bg-teal-400 rounded-lg"
+                button-class="px-8 py-4 text-xl base-btn"
                 inner-text="Create Red Envelope"
               />
               <div
                 v-else
-                class="px-8 py-4 text-xl text-white bg-teal-500 hover:bg-teal-400 rounded-lg flex flex-wrap items-center"
+                class="px-8 py-4 text-xl base-btn rounded-lg flex flex-wrap items-center"
               >
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
