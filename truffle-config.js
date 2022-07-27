@@ -78,6 +78,6 @@ module.exports = {
     }
   },
   api_keys: {
-    etherscan: import.meta.env.ETHERSCAN_API_KEY || "PMPIGW8S5JCZU92W8IADFPI1BNMEP5UBFT"
+    etherscan: "PMPIGW8S5JCZU92W8IADFPI1BNMEP5UBFT"
   }
 };
