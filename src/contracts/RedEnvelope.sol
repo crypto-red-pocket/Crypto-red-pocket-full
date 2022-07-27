@@ -12,10 +12,10 @@ contract RedEnvelope {
     uint creationTime;
   }
   mapping(bytes => Envelopes) envelope;
-  mapping(address => bytes []) receiverToEnvelope;
-  mapping(address => bytes []) creatorToEnvelope;
+  mapping(address => bytes []) public receiverToEnvelope;
+  mapping(address => bytes []) public creatorToEnvelope;
 
-  event EnvelopCreated(bool created);
+  event EnvelopCreated(bytes envelopeId);
   event Claimed(bool claimed);
   event CreatorWithdrawn(bool withdrawn);
 	constructor () 
@@ -29,19 +29,18 @@ contract RedEnvelope {
 	********************************************************/
 
   /// @notice create an envelope and share money with your people
-  /// @param _tokenAmount amount of weis to share
   /// @param _message welcome message of the envelope
   /// @dev creates envelope and stores crypto in this contract to later on distribute with participants
-	function createEnvelope(uint _tokenAmount, uint _participantsLimit, string memory _message) external payable returns(bytes memory _envelopeId) {
-    require(msg.value == _tokenAmount, "Insufficient funds");
+	function createEnvelope(uint _participantsLimit, string memory _message) external payable returns(bytes memory _envelopeId) {
+    require(msg.value > 0, "Insufficient funds");
     _envelopeId =  abi.encode(msg.sender, block.timestamp);
     envelope[_envelopeId].creator = msg.sender;
-    envelope[_envelopeId].tokenAmount = _tokenAmount;
+    envelope[_envelopeId].tokenAmount = msg.value;
     envelope[_envelopeId].participantsLimit = _participantsLimit;
     envelope[_envelopeId].message = _message;
     envelope[_envelopeId].creationTime = block.timestamp;
     creatorToEnvelope[msg.sender].push(_envelopeId);
-    emit EnvelopCreated(true);
+    emit EnvelopCreated(_envelopeId);
 	}
 
   /// @notice Open envelope before others and get crypto gift!
@@ -103,22 +102,19 @@ contract RedEnvelope {
   *                                                       *
   ********************************************************/
 
+  function getEnvelope(bytes memory _envelopeId) external view returns(Envelopes memory) {
+    return envelope[_envelopeId];
+  }
+
   /// @dev used in front-end to display creator envelope data
   /// @param _creatorAddress address of envelope creator
   /// @return _envelopes All envelopes created by user
   function getCreatorEnvelopes(address _creatorAddress) external view returns (Envelopes[] memory) {
     bytes[] memory _creatorToEnvelope = creatorToEnvelope[_creatorAddress];
     Envelopes[] memory _envelopes = new Envelopes[](_creatorToEnvelope.length);
+
     for(uint i = 0; i < _creatorToEnvelope.length; i++) {
-      _envelopes[i] = Envelopes(
-        _envelopes[i].creator,
-        _envelopes[i].tokenAmount,
-        _envelopes[i].participantsLimit,
-        _envelopes[i].participants,
-        _envelopes[i].participantsPrize,
-        _envelopes[i].message,
-        _envelopes[i].creationTime
-      );
+      _envelopes[i] = envelope[_creatorToEnvelope[i]];
     }
     return _envelopes;
   }
@@ -130,15 +126,7 @@ contract RedEnvelope {
     bytes[] memory _receiverToEnvelope = receiverToEnvelope[_receiverAddress];
     Envelopes[] memory _envelopes = new Envelopes[](_receiverToEnvelope.length);
     for(uint i = 0; i < _receiverToEnvelope.length; i++) {
-      _envelopes[i] = Envelopes(
-        _envelopes[i].creator,
-        _envelopes[i].tokenAmount,
-        _envelopes[i].participantsLimit,
-        _envelopes[i].participants,
-        _envelopes[i].participantsPrize,
-        _envelopes[i].message,
-        _envelopes[i].creationTime
-      );
+      _envelopes[i] = envelope[_receiverToEnvelope[i]];
     }
     return _envelopes;
   }
