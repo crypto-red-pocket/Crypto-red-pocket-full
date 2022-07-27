@@ -6,7 +6,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "truffle-compile": "truffle compile",
-    "truffle-deploy-development": "truffle migrate --network development"
+    "truffle-deploy-development": "truffle migrate --network development",
+    "truffle-migrate-rinkeby": "truffle migrate --reset --network rinkeby"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.0",
@@ -23,6 +24,7 @@
     "swiper": "^6.8.4",
     "truffle": "^5.5.23",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
+    "truffle-plugin-verify": "^0.5.26",
     "vue": "^3.2.20",
     "vue-router": "^4.0.12"
   },
