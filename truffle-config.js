@@ -25,8 +25,42 @@ module.exports = {
       skipDryRun: true
       // gas: 200000,
       // gasPrice: 20000000
+    },
+    mumbai: {
+      provider: function() {
+        return new HDWalletProvider(
+          privateKeys.split(','), // array of private keys
+          `https://rpc-mumbai.maticvigil.com/` // Url to an Polygon node
+          )
+      },
+      networkId: 321
+    },
+    bnb: {
+      // url: `https://matic-mumbai.chainstacklabs.com:8545/`,
+      url: `https://data-seed-prebsc-1-s1.binance.org:8545`,
+      accounts: [privateKeys]
+    },
+    rinkeby: {
+      provider: function() {
+        return new HDWalletProvider(
+          privateKeys.split(','), // array of private keys
+          `https://eth-rinkeby.alchemyapi.io/v2/uDRuoitYcadGiI-VgWZSSTqYGHO6B4Ub` // Url to an Polygon node
+          )
+      },
+      network_id: 4
+    },
+    neon: {
+      // url: `https://matic-mumbai.chainstacklabs.com:8545/`,
+      url: 'https://proxy.devnet.neonlabs.org/solana',
+      accounts: [privateKeys],
+      network_id: 245022926,
+      allowUnlimitedContractSize: false,
+      timeout: 1000000,
+      isFork: true
     }
   },
+  contracts_directory: './src/contracts/',
+  contracts_build_directory: './src/abis/',
   // Configure your compilers
   compilers: {
     solc: {
@@ -34,9 +68,7 @@ module.exports = {
         enabled: true,
         runs: 200
       },
-      version: "^0.8.0" 
+      version: "0.8.9" 
     }
-  },
-  contracts_directory: './src/contracts/',
-  contracts_build_directory: './src/abis/',
+  }
 };
