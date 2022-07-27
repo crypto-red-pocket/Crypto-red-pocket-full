@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 contract RedEnvelope {
   struct Envelopes{
+    address creator;
     uint tokenAmount;
     uint participantsLimit;
     uint participantsCounter;
@@ -25,9 +26,11 @@ contract RedEnvelope {
 	function createEnvelope(uint _tokenAmount, uint _participantsLimit, string memory _message) external payable{
     require(msg.value == _tokenAmount, "Insufficient funds");
     bytes memory _envelopeId =  abi.encode(msg.sender, block.timestamp);
+    envelope[_envelopeId].creator = msg.sender;
     envelope[_envelopeId].tokenAmount = _tokenAmount;
     envelope[_envelopeId].participantsLimit = _participantsLimit;
     envelope[_envelopeId].message = _message;
+    envelope[_envelopeId].creationTime = block.timestamp;
     creatorToEnvelope[msg.sender].push(_envelopeId);
 	}
 
@@ -44,6 +47,16 @@ contract RedEnvelope {
     }
     _envelope.tokenAmount -= _amountToDeliver;
     (bool sent, ) = payable(msg.sender).call{value: _amountToDeliver}("");
+    require(sent, "Failed to send Ether");
+  }
+
+  function creatorWithdraw(bytes memory _envelopeId) external {
+    Envelopes storage _envelope = envelope[_envelopeId];
+    require(_envelope.creationTime + 86400 >= block.timestamp, "Too soon");
+    require(_envelope.tokenAmount == 0, "Empty envelope");
+    require(_envelope.creator == msg.sender, "Not creator");
+    _envelope.tokenAmount = 0;
+    (bool sent, ) = payable(msg.sender).call{value: _envelope.tokenAmount}("");
     require(sent, "Failed to send Ether");
   }
 
@@ -68,6 +81,7 @@ contract RedEnvelope {
     Envelopes[] memory _envelopes = new Envelopes[](_creatorToEnvelope.length);
     for(uint i = 0; i < _creatorToEnvelope.length; i++) {
       _envelopes[i] = Envelopes(
+        _envelopes[i].creator,
         _envelopes[i].tokenAmount,
         _envelopes[i].participantsLimit,
         _envelopes[i].participantsCounter,
@@ -83,6 +97,7 @@ contract RedEnvelope {
     Envelopes[] memory _envelopes = new Envelopes[](_receiverToEnvelope.length);
     for(uint i = 0; i < _receiverToEnvelope.length; i++) {
       _envelopes[i] = Envelopes(
+        _envelopes[i].creator,
         _envelopes[i].tokenAmount,
         _envelopes[i].participantsLimit,
         _envelopes[i].participantsCounter,
