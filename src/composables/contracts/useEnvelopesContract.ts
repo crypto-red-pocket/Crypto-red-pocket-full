@@ -4,10 +4,11 @@ import { Web3Provider } from '@ethersproject/providers'
 import { currentAccount, provider } from '../useWallet'
 
 import { abi } from '../../abis/RedEnvelope.json'
+import { RedEnvelope as address } from '../../../contract-addresses.json'
 
 const Contract = computed(() => {
   return new ethers.Contract(
-    import.meta.env.VITE_ENVELOPES_CONTRACT,
+    address,
     abi,
     provider.value instanceof Web3Provider && currentAccount.value
       ? provider.value.getSigner()
@@ -33,6 +34,5 @@ async function createEnvelope(
 }
 
 export {
-  // Contract,
   createEnvelope
 }

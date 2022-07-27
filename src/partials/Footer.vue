@@ -119,6 +119,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const nftContract = ref(import.meta.env.VITE_ENVELOPES_CONTRACT)
+const nftContract = "#"
 const reportContract = ref(import.meta.env.VITE_ALERTS_CONTRACT)
 </script>

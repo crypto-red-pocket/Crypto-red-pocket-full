@@ -15,7 +15,6 @@ interface ImportMetaEnv extends Readonly<Record<string, string>> {
   readonly VITE_BACKEND_URL: string
   readonly VITE_DEFAULT_NETWORK_ID: number
   readonly VITE_INFURA_PROJECT_ID: string
-  readonly VITE_ENVELOPES_CONTRACT: string
   readonly VITE_ALERTS_CONTRACT: string
 }
 interface ImportMeta {
