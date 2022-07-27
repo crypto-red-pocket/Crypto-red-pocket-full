@@ -1,14 +1,14 @@
 <template>
   <section>
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div className="flex h-[90vh] container mx-auto">
-        <section className="flex flex-1 text-white items-center">
-          <div className="">
-            <h1 className="text-6xl font-semibold">Red Pocket</h1>
-            <sub className="text-2xl text-lightViolet">
+      <div class="flex h-[90vh] container mx-auto">
+        <section class="flex flex-1 text-white items-center">
+          <div class="">
+            <h1 class="text-6xl font-semibold">Red Pocket</h1>
+            <sub class="text-2xl text-lightViolet">
               DeFi Payments for your loved ones!
             </sub>
-            <p className="text-lightGrey mt-5">
+            <p class="text-lightGrey mt-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
               laboriosam aliquid unde ipsam, similique alias magnam quis eum
               numquam saepe dignissimos minus magni natus quae corporis
@@ -39,7 +39,7 @@
             </div>
           </div>
         </section>
-        <div className="flex flex-1">
+        <div class="flex flex-1">
            <iframe
               src="https://my.spline.design/interactivespherescopy-70c62ae8fc15dbaaa057919e8e43d896/"
               frameborder="0"

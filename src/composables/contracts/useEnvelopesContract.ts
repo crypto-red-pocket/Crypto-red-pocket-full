@@ -33,6 +33,24 @@ async function createEnvelope(
   return await transaction.wait().then(res => console.log(res));
 }
 
+async function participate(
+  envelopeId: string,
+) {
+  const transaction =  await Contract.value
+    .claim(envelopeId)
+      
+  return await transaction.wait().then(res => console.log(res));
+}
+
+async function getEnvelopeById(
+  envelopeId: string,
+) {
+  return  await Contract.value
+    .getEnvelope(envelopeId)
+}
+
 export {
-  createEnvelope
+  createEnvelope,
+  getEnvelopeById,
+  participate
 }
