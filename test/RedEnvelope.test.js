@@ -22,7 +22,8 @@ contract('Collection Pizzerias', (accounts) => {
       )
     })
     it("Creator getter works", async()=> {
-      
+      receipt = await redEnvelope.getEnvelope(envelopeId)
+      console.log(receipt)
     })
   })
 

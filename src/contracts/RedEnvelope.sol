@@ -3,7 +3,9 @@ pragma solidity ^0.8.0;
 
 contract RedEnvelope {
   struct Envelopes{
+    bytes envelopeId;
     address creator;
+    uint totalTokenAmount;
     uint tokenAmount;
     uint participantsLimit;
     address[] participants;
@@ -34,7 +36,9 @@ contract RedEnvelope {
 	function createEnvelope(uint _participantsLimit, string memory _message) external payable returns(bytes memory _envelopeId) {
     require(msg.value > 0, "Insufficient funds");
     _envelopeId =  abi.encode(msg.sender, block.timestamp);
+    envelope[_envelopeId].envelopeId = _envelopeId;
     envelope[_envelopeId].creator = msg.sender;
+    envelope[_envelopeId].totalTokenAmount = msg.value;
     envelope[_envelopeId].tokenAmount = msg.value;
     envelope[_envelopeId].participantsLimit = _participantsLimit;
     envelope[_envelopeId].message = _message;
