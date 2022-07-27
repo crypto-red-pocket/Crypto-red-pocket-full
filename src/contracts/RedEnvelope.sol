@@ -55,7 +55,7 @@ contract RedEnvelope {
     uint _currentParticipant = _envelope.participants.length;
     require(_envelope.participantsLimit >  _currentParticipant, "max participants exceeded");
     require(_envelope.tokenAmount > 0, "tokens already distributed");
-    _envelope.participants[_currentParticipant + 1] = msg.sender;
+    _envelope.participants.push() = msg.sender;
     uint _amountToDeliver;
     // If it is the last possible participant it shares the remaining crypto. Otherwise it shares a random amount of crypto
     if(_envelope.participantsLimit != _currentParticipant) {
@@ -67,7 +67,7 @@ contract RedEnvelope {
     (bool sent, ) = payable(msg.sender).call{value: _amountToDeliver}("");
     require(sent, "Failed to send Ether");
     receiverToEnvelope[msg.sender].push(_envelopeId);
-    _envelope.participantsPrize[_currentParticipant + 1] = _amountToDeliver;
+    _envelope.participantsPrize.push(_amountToDeliver);
     emit Claimed(true);
   }
 
@@ -78,7 +78,7 @@ contract RedEnvelope {
   function creatorWithdraw(bytes memory _envelopeId) external {
     Envelopes storage _envelope = envelope[_envelopeId];
     require(_envelope.creationTime + 86400 >= block.timestamp, "Too soon");
-    require(_envelope.tokenAmount == 0, "Empty envelope");
+    require(_envelope.tokenAmount > 0, "Empty envelope");
     require(_envelope.creator == msg.sender, "Not creator");
     _envelope.tokenAmount = 0;
     (bool sent, ) = payable(msg.sender).call{value: _envelope.tokenAmount}("");

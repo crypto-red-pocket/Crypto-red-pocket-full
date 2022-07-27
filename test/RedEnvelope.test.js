@@ -10,7 +10,7 @@ contract('Collection Pizzerias', (accounts) => {
 
   describe("Create Envelope", ()=> {
     it("Envelope Created succesfully", async()=> {
-      receipt = await redEnvelope.createEnvelope(5,"Hello there!", { value: 500})
+      receipt = await redEnvelope.createEnvelope(5,"Hello there!", { value: 100000000})
       await redEnvelope.getCreatorEnvelopes(creator)
       console.log(receipt.toString())
     })
@@ -24,6 +24,13 @@ contract('Collection Pizzerias', (accounts) => {
     it("Creator getter works", async()=> {
       receipt = await redEnvelope.getEnvelope(envelopeId)
       console.log(receipt)
+    })
+  })
+
+  describe("Claim", ()=> {
+    it("Claim works", async()=> {
+      await redEnvelope.claim(envelopeId)
+      await redEnvelope.creatorWithdraw(envelopeId)
     })
   })
 
