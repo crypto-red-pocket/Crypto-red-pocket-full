@@ -32,9 +32,9 @@ contract RedEnvelope {
   /// @param _tokenAmount amount of weis to share
   /// @param _message welcome message of the envelope
   /// @dev creates envelope and stores crypto in this contract to later on distribute with participants
-	function createEnvelope(uint _tokenAmount, uint _participantsLimit, string memory _message) external payable {
+	function createEnvelope(uint _tokenAmount, uint _participantsLimit, string memory _message) external payable returns(bytes memory _envelopeId) {
     require(msg.value == _tokenAmount, "Insufficient funds");
-    bytes memory _envelopeId =  abi.encode(msg.sender, block.timestamp);
+    _envelopeId =  abi.encode(msg.sender, block.timestamp);
     envelope[_envelopeId].creator = msg.sender;
     envelope[_envelopeId].tokenAmount = _tokenAmount;
     envelope[_envelopeId].participantsLimit = _participantsLimit;

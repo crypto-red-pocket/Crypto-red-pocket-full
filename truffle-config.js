@@ -60,6 +60,11 @@ module.exports = {
       isFork: true
     }
   },
+  api_keys: {
+    // etherscan: "2IWVY2824WC7VZ56UXH49FSPK5PPPZC7IG" // mumbai
+    // etherscan: "6888TJRWBGYKFE8N16Q4BZZM2M1URVWM4F"// bnb 
+    etherscan: "AJ45C6F74SJ2P3EMW61V3DD1CJAJC3HTJK" // ethereum
+  },
   contracts_directory: './src/contracts/',
   contracts_build_directory: './src/abis/',
   // Configure your compilers
