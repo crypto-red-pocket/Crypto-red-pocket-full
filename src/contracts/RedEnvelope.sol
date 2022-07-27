@@ -6,7 +6,8 @@ contract RedEnvelope {
     address creator;
     uint tokenAmount;
     uint participantsLimit;
-    uint participantsCounter;
+    address[] participants;
+    uint[] participantsPrize;
     string message;
     uint creationTime;
   }
@@ -48,13 +49,14 @@ contract RedEnvelope {
   /// @dev contract distributes crypto to msg.sender
   function claim(bytes memory _envelopeId) external {
     Envelopes storage _envelope = envelope[_envelopeId];
-    require(_envelope.participantsLimit >  _envelope.participantsCounter, "max participants exceeded");
+    uint _currentParticipant = _envelope.participants.length;
+    require(_envelope.participantsLimit >  _currentParticipant, "max participants exceeded");
     require(_envelope.tokenAmount > 0, "tokens already distributed");
-    _envelope.participantsCounter++;
+    _envelope.participants[_currentParticipant + 1] = msg.sender;
     uint _amountToDeliver;
     // If it is the last possible participant it shares the remaining crypto. Otherwise it shares a random amount of crypto
-    if(_envelope.participantsLimit != _envelope.participantsCounter) {
-      _amountToDeliver = _getAmountToDeliver(_envelope.participantsCounter, _envelope.tokenAmount);
+    if(_envelope.participantsLimit != _currentParticipant) {
+      _amountToDeliver = _getAmountToDeliver(_currentParticipant, _envelope.tokenAmount);
     } else {
       _amountToDeliver = _envelope.tokenAmount;
     }
@@ -62,6 +64,7 @@ contract RedEnvelope {
     (bool sent, ) = payable(msg.sender).call{value: _amountToDeliver}("");
     require(sent, "Failed to send Ether");
     receiverToEnvelope[msg.sender].push(_envelopeId);
+    _envelope.participantsPrize[_currentParticipant + 1] = _amountToDeliver;
     emit Claimed(true);
   }
 
@@ -111,7 +114,8 @@ contract RedEnvelope {
         _envelopes[i].creator,
         _envelopes[i].tokenAmount,
         _envelopes[i].participantsLimit,
-        _envelopes[i].participantsCounter,
+        _envelopes[i].participants,
+        _envelopes[i].participantsPrize,
         _envelopes[i].message,
         _envelopes[i].creationTime
       );
@@ -130,7 +134,8 @@ contract RedEnvelope {
         _envelopes[i].creator,
         _envelopes[i].tokenAmount,
         _envelopes[i].participantsLimit,
-        _envelopes[i].participantsCounter,
+        _envelopes[i].participants,
+        _envelopes[i].participantsPrize,
         _envelopes[i].message,
         _envelopes[i].creationTime
       );
