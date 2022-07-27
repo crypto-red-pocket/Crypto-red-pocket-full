@@ -1,33 +1,47 @@
 <template>
-  <header class="absolute w-full z-30">
+  <header class="w-full z-30 text-white font-light bg-transparent top-0 fixed backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-between h-20">
-
-        <!-- Site branding -->
-        <div class="shrink-0 mr-5">
-          <!-- Logo -->
-          <router-link to="/" class="block" aria-label="Cruip">
-            
-            <img class="" src="../images/favicon.png" width="70" height="60" style="max-width: 84.33%;" alt="Features illustration" />
-          </router-link>
+      <div class=" flex justify-between py-5 items-center border-b-2 border-lightRed/10">
+        <div class="font-inter font-bold text-2xl cursor-pointer">
+          <div>
+            <span class="text-lightRed">Red</span>
+            <span class="text-lightViolet">Pocket_</span>
+          </div>
         </div>
-
-        <!-- Desktop navigation -->
-        <nav class="hidden md:flex md:grow">
-
-          <!-- Desktop menu links -->
-          <ul class="flex grow flex-wrap items-center font-medium">
-            <li>
-              <router-link to="/envelope/1" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 px-5 py-2 flex items-center transition duration-150 ease-in-out">NFT Collection</router-link>
-            </li>
-          </ul>
-
-          <!-- Desktop CTA on the right -->
-          <ul class="flex justify-end flex-wrap items-center">
-            <ConnectButton />
-          </ul>
-
-        </nav>
+  
+        <!-- Desktop Menu -->
+        <aside class="hidden md:flex gap-10 text-lg">
+          <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
+            <router-link
+              to="/"
+            >
+              About
+            </router-link>
+          </div>
+          <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
+            <router-link
+              to="/"
+            >
+              Team
+            </router-link>
+          </div>
+          <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
+            <router-link
+              to="/"
+            >
+              Contact
+            </router-link>
+          </div>
+          <div class="hover:text-lightViolet my-auto">
+            <router-link
+              to="/"
+            >
+              <button class="ease-in-out duration-300 bg-gradient-to-tr from-lightViolet to-lightRed text-darkViolet font-semibold w-max px-10 py-1 rounded-lg hover:px-12 ">
+                Start Creating
+              </button>
+            </router-link>
+          </div>
+        </aside>
 
         <!-- Mobile menu -->
         <div class="inline-flex md:hidden">
@@ -50,23 +64,53 @@
             leave-from-class="opacity-100"
             leave-to-class="opacity-0"
           >
-            <nav v-show="mobileNavOpen" id="mobile-nav" ref="mobileNav" class="fixed top-0 h-screen z-20 left-0 w-full max-w-sm -ml-16 overflow-scroll bg-white dark:bg-gray-900 shadow-lg no-scrollbar">
-              <div class="py-6 pr-4 pl-20">
+            <nav v-show="mobileNavOpen" id="mobile-nav" ref="mobileNav" class="fixed top-0 h-screen z-20 left-0 w-full max-w-md -ml-16 overflow-scroll bg-white dark:bg-gray-900 shadow-lg no-scrollbar">
+              <div class="py-5 pr-4 pl-20">
                 <!-- Logo -->
-                <img class="pb-5" src="../images/favicon.png" width="70" height="60" style="max-width: 84.33%;" alt="Features illustration" />
+                <div class="font-inter font-bold text-2xl cursor-pointer">
+                  <div>
+                    <span class="text-lightRed">Red</span>
+                    <span class="text-lightViolet">Pocket_</span>
+                  </div>
+                </div>
                 <!-- Links -->
                 <ul>
-                  <li>
-                    <router-link to="/envelope/1" class="flex text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 py-2">NFT Collection</router-link>
-                  </li>
-                  <ConnectButton class="mt-6"/>
+                  <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer py-4">
+                    <router-link
+                      to="/"
+                    >
+                      About
+                    </router-link>
+                  </div>
+                  <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer pb-4">
+                    <router-link
+                      to="/"
+                    >
+                      Team
+                    </router-link>
+                  </div>
+                  <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer pb-4">
+                    <router-link
+                      to="/"
+                    >
+                      Contact
+                    </router-link>
+                  </div>
+                  <div class="hover:text-lightViolet my-auto py-4">
+                    <router-link
+                      to="/"
+                    >
+                      <button class="ease-in-out duration-300 bg-gradient-to-tr from-lightViolet to-lightRed text-darkViolet font-semibold w-max px-10 py-1 rounded-lg hover:px-12 ">
+                        Start Creating
+                      </button>
+                    </router-link>
+                  </div>
                 </ul>
               </div>
             </nav>
           </transition>
 
         </div>
-
       </div>
     </div>
   </header>

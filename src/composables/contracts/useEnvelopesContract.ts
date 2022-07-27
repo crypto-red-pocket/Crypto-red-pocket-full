@@ -16,16 +16,23 @@ const Contract = computed(() => {
 })
 
 
-async function mint(
-  // payableAmount: number, amount: number, coupon: object, couponType: number
+async function createEnvelope(
+  tokenAmount: string,
+  participantsLimit: number,
+  message: string
 ) {
   const transaction =  await Contract.value
-    .mint({ value: ethers.utils.parseEther(`0.0000001`) })
+    .createEnvelope(
+      ethers.utils.parseEther(tokenAmount),
+      participantsLimit,
+      message,
+      { value: ethers.utils.parseEther(tokenAmount) }
+    )
       
-  return await transaction.wait();
+  return await transaction.wait().then(res => console.log(res));
 }
 
 export {
   // Contract,
-  mint
+  createEnvelope
 }

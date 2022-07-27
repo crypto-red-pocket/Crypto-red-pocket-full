@@ -5,6 +5,7 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 const privateKeys = process.env.PRIVATE_KEYS || "";
 
 module.exports = {
+  plugins: ['truffle-plugin-verify'],
   networks: {
     development: {
       host: "127.0.0.1",
@@ -70,5 +71,8 @@ module.exports = {
       },
       version: "0.8.9" 
     }
+  },
+  api_keys: {
+    etherscan: import.meta.env.ETHERSCAN_API_KEY || "PMPIGW8S5JCZU92W8IADFPI1BNMEP5UBFT"
   }
 };

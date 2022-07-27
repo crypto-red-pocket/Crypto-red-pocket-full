@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <div class="scroll-smooth font-inter text-white w-screen bg-gradient-to-tr from-darkViolet to-darkRed bg-fixed">
+    <router-view />
+  </div>
 </template>
 
 <script setup lang="ts">
