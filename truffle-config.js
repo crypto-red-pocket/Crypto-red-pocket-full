@@ -1,8 +1,10 @@
 require('dotenv').config();
 
+const ether = require('@openzeppelin/test-helpers/src/ether');
 //const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const privateKeys = process.env.PRIVATE_KEYS || "";
+const mnemonic = process.env.MNEMONIC || ""
 
 module.exports = {
   plugins: ['truffle-plugin-verify'],
@@ -27,37 +29,75 @@ module.exports = {
       // gas: 200000,
       // gasPrice: 20000000
     },
-    mumbai: {
+    neon: {
       provider: function() {
         return new HDWalletProvider(
           privateKeys.split(','), // array of private keys
-          `https://rpc-mumbai.maticvigil.com/` // Url to an Polygon node
+          `https://proxy.devnet.neonlabs.org/solana` // Url to neon labs
           )
       },
-      networkId: 321
+      from: "0x9b17C9E2AA27F93b1d0e71b872069e096cB41233",
+      network_id: "*"
     },
-    bnb: {
-      // url: `https://matic-mumbai.chainstacklabs.com:8545/`,
-      url: `https://data-seed-prebsc-1-s1.binance.org:8545`,
-      accounts: [privateKeys]
+    mumbai: {
+      networkCheckTimeout: 30000000000,
+      /*provider: function() {
+        return new HDWalletProvider( {
+          mnemonic: mnemonic, // array of private keys
+          providerOrUrl: `https://polygontestapi.terminet.io/rpc`, // Url to Polygon node,
+          pollingInterval: 30000000000
+        }
+          )
+      } ,*/
+      provider: function() {
+        return new HDWalletProvider(
+          privateKeys.split(','), // array of private keys
+          `https://polygon-mumbai.g.alchemy.com/v2/JO_wt26E5SJ7rno8PUeWXYetPYQyYU03` // Url to an Polygon node
+          )
+      },
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
+    celo: {
+      provider: function() {
+        return new HDWalletProvider(
+          privateKeys.split(','), // array of private keys
+          `https://alfajores-forno.celo-testnet.org` // Url to an Polygon node
+          )
+      },
+      network_id: 44787,
+      gas: 4000000
+    },
+    gnosis: {
+      provider: function() {
+        return new HDWalletProvider(
+          privateKeys.split(','), // array of private keys
+          `https://rpc.gnosischain.com` // URL to infura node
+          )
+      },
+      network_id: 100,
+      gasPrice: 1500000000
+    },
+    cronos: {
+      provider: function() {
+        return new HDWalletProvider(
+          privateKeys.split(','), // array of private keys
+          `wss://cronos-testnet-3.crypto.org:8546` // URL to infura node
+          )
+      },
+      network_id: "*",
+      skipDryRun: true
     },
     rinkeby: {
       provider: function() {
         return new HDWalletProvider(
           privateKeys.split(','), // array of private keys
-          `https://eth-rinkeby.alchemyapi.io/v2/uDRuoitYcadGiI-VgWZSSTqYGHO6B4Ub` // Url to an Polygon node
+          `https://rinkeby.infura.io/v3/edcc63a917694ec0af55769d6a40839f` // URL to infura node
           )
       },
       network_id: 4
-    },
-    neon: {
-      // url: `https://matic-mumbai.chainstacklabs.com:8545/`,
-      url: 'https://proxy.devnet.neonlabs.org/solana',
-      accounts: [privateKeys],
-      network_id: 245022926,
-      allowUnlimitedContractSize: false,
-      timeout: 1000000,
-      isFork: true
     }
   },
   api_keys: {
@@ -78,6 +118,8 @@ module.exports = {
     }
   },
   api_keys: {
-    etherscan: "PMPIGW8S5JCZU92W8IADFPI1BNMEP5UBFT"
+    etherscan: "PMPIGW8S5JCZU92W8IADFPI1BNMEP5UBFT" // Rinkeby
+    // etherscan: "4UGX9RKT7G9GVBBMFW5ZMQNJMGECAXVII4" // Celo
+
   }
 };

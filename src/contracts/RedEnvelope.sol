@@ -5,6 +5,7 @@ contract RedEnvelope {
   struct Envelopes{
     bytes envelopeId;
     address creator;
+    string creatorNickyName;
     uint totalTokenAmount;
     uint tokenAmount;
     uint participantsLimit;
@@ -33,11 +34,12 @@ contract RedEnvelope {
   /// @notice create an envelope and share money with your people
   /// @param _message welcome message of the envelope
   /// @dev creates envelope and stores crypto in this contract to later on distribute with participants
-	function createEnvelope(uint _participantsLimit, string memory _message) external payable returns(bytes memory _envelopeId) {
+	function createEnvelope(uint _participantsLimit, string memory _message, string memory _creatorNickName) external payable returns(bytes memory _envelopeId) {
     require(msg.value > 0, "Insufficient funds");
     _envelopeId =  abi.encode(msg.sender, block.timestamp);
     envelope[_envelopeId].envelopeId = _envelopeId;
     envelope[_envelopeId].creator = msg.sender;
+    envelope[_envelopeId].creatorNickyName = _creatorNickName;
     envelope[_envelopeId].totalTokenAmount = msg.value;
     envelope[_envelopeId].tokenAmount = msg.value;
     envelope[_envelopeId].participantsLimit = _participantsLimit;

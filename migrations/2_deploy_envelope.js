@@ -1,4 +1,5 @@
 const RedEnvelope = artifacts.require('RedEnvelope');
+const { create } = require('domain');
 const fs = require('fs');
 const path = require('path');
 
@@ -17,7 +18,11 @@ function setAddress (contractName, contractAddress) {
 }
 
 module.exports = async function (deployer) {
-  await deployer
+   await deployer
     .deploy(RedEnvelope)
     .then(() => setAddress('RedEnvelope', RedEnvelope.address));
+  redEnvelope = await RedEnvelope.deployed()
+  await redEnvelope.createEnvelope(3,"Hello there", "Juanda", {value: 1000000});
+  receipt = await redEnvelope.getCreatorEnvelopes("0x9b17C9E2AA27F93b1d0e71b872069e096cB41233")
+  console.log(receipt[0].envelopeId)
 };
