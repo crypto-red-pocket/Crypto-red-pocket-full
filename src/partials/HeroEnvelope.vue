@@ -7,8 +7,18 @@
     </div>
   </section>
   <section v-else-if="isValidEnvelope && !isInitialLoading">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 md:flex md:h-[70vh] container mx-auto py-24 md:pt-56 gap-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-32">
+      <div
+        class="w-full flex justify-center"
+      >
+        <BaseButton
+          @click="copyRegisterURL"
+          :class="registerLinkCopied ? 'opacity-50 pointer-events-none':''"
+          button-class="px-8 py-4 text-xl base-btn text-white transition-all"
+          :inner-text="registerLinkCopied ? '🔗 LINK COPIED 🔗' : '🔗 SHARE POCKET LINK 🔗'"
+        />
+      </div>
+      <div class="grid grid-cols-1 lg:flex md:min-h-[70vh] container mx-auto pb-20 pt-12 gap-16">
         <section class="flex flex-1 text-white">
           <div class="">
             <h1 class="text-6xl font-semibold">Welcome</h1>
@@ -29,7 +39,7 @@
               <BaseButton
                 v-else-if="!isLoading && !canParticipate"
                 button-class="px-8 py-4 text-xl base-btn pointer-events-none opacity-50"
-                inner-text="You have already participated"
+                inner-text="You have participated"
               />
               <BaseButton
                 v-else-if="!isLoading && (envelope.participants.length >= envelope.participantsLimit.toNumber())"
@@ -55,46 +65,102 @@
             </div>
           </div>
         </section>
-        <div class="flex flex-1 flex-col">
-          <h2 class="text-2xl font-semibold">Pocket Info:</h2>
-          <div class="text-white pl-6 pb-8 pt-6 grid grid-cols-3 gap-2">
-            <div class="col-span-3">
-              <div class="envelope-subtitle">
-                Message:
-              </div>
-              <div class="opacity-70">
-                {{ envelope.message }}
-              </div>
-            </div>
-            <div>
-              <div class="envelope-subtitle">
-                Participants:
-              </div>
-              <div class="opacity-70">
-                {{`${envelope.participants.length} / ${envelope.participantsLimit.toNumber()}`}}
-              </div>
-            </div>
-            <div>
-              <div class="envelope-subtitle">
-                Prize:
-              </div>
-              <div class="opacity-70">
-                1000 MATIC
-              </div>
-            </div>
-            <div>
-              <div class="envelope-subtitle">
-                Date:
-              </div>
-              <div class="opacity-70">
-                {{ new Date(envelope.creationTime.toNumber() * 1000).toLocaleString() }}
-              </div>
-            </div>
-          </div>
 
-          <h2 class="text-2xl font-semibold">Leaderboard:</h2>
-        </div>
+        <section
+          class="flex flex-col justify-center items-center rounded-xl
+            bg-envelopeCard bg-cover w-full lg:w-2/3 py-16 px-20
+            hover:scale-105 hover:translate-x-2 ease-in-out duration-700
+            drop-shadow-2xl relative"
+        >
+          <header class="text-lg text-lightViolet uppercase tracking-widest pb-8">
+            Envelope Details
+          </header>
+
+          <div class="flex flex-col gap-8 items-center">
+            <section class="flex flex-col gap-2 text-left w-full">
+              <div class="">
+                <sub class="text-lightRed uppercase tracking-widest font-light">
+                  Created By
+                </sub>
+                <h3 class="text-3xl">Hannah Redmond</h3>
+              </div>
+              <div>
+                <sub class="text-lightRed uppercase tracking-widest font-light">
+                  Message
+                </sub>
+                <p class="text-lg">
+                  {{ envelope.message }}
+                  Thanks for joining my community! First 5 people to open this
+                  envelope will get a reward.
+                </p>
+              </div>
+            </section>
+            <!-- {/* Bottom Section */} -->
+            <section
+              class="flex justify-between w-full
+              bg-black/50 rounded-lg p-5"
+            >
+              <div>
+                <sub class="text-lightRed uppercase tracking-widest font-light">
+                  Total Prize Amt.
+                </sub>
+                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(envelope.totalTokenAmount.toNumber()) }} MATIC</p>
+              </div>
+              <div>
+                <sub class="text-lightRed uppercase tracking-widest font-light">
+                  Participants
+                </sub>
+                <p class="text-2xl pt-1">{{`${envelope.participants.length} / ${envelope.participantsLimit.toNumber()}`}}</p>
+              </div>
+
+              <!-- <div>
+                <sub class="text-lightRed uppercase tracking-widest font-light">
+                  Valid Till
+                </sub>
+                <p class="text-xl pt-1">{{ new Date(envelope.creationTime.toNumber() * 1000).toLocaleString() }}</p>
+              </div> -->
+            </section>
+          </div>
+        </section>
       </div>      
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full text-center py-10">
+      <header class="text-4xl text-lightViolet font-semibold pb-5">
+        Leaderboard
+      </header>
+
+      <table class="w-full table-auto rounded-lg">
+        <thead class="h-16 bg-black border-lightViolet/10 border-2 text-lg text-lightRed">
+          <th class="font-normal px-5 text-left">#</th>
+          <th class="font-normal px-5 hidden lg:table-cell">Address</th>
+          <th class="font-normal px-5">Amt. Won</th>
+        </thead>
+        <tbody class="">
+            <tr
+              v-for="(participant, index) in envelope.participants"
+              :key="index"
+              class="hover:bg-darkViolet h-16 border-lightViolet/10 border-2"
+            >
+              <td class="pl-5 lg:px-5 text-left">
+                {{ index }}                
+                <span
+                  v-if="currentAccount === participant"
+                  class="text-white rounded-md font-bold bg-lightViolet px-2 ml-2"
+                >
+                  YOU
+                </span>
+              </td>
+              <td
+                class="px-5 text-center hidden lg:table-cell"  
+              >
+                {{ truncateAddress(participant, 15) }}
+              </td>
+              <td class="lg:px-5 text-center">{{ ethers.utils.formatEther(envelope.participantsPrize[index].toNumber()) }} MATIC</td>
+            </tr>
+        </tbody>
+      </table>
     </div>
   </section>
   <section v-else>
@@ -111,15 +177,18 @@
 </template>
 
 <script lang="ts" setup>
+import { ethers } from 'ethers'
 import { ref, computed, onMounted } from 'vue'
 import { currentAccount } from '../composables/useWallet'
 import BaseButton from './BaseButton.vue';
 import ConnectButton from './ConnectButton.vue';
+import { truncateAddress } from '../utils';
 import { participate, getEnvelopeById } from '../composables/contracts/useEnvelopesContract'
 import { useRoute } from 'vue-router'
 import { BigNumber } from 'ethers'
 
 interface Envelope {
+  creator: string,
   envelopeId: string,
   message: string,
   participants: string[],
@@ -132,12 +201,13 @@ interface Envelope {
 
 const route = useRoute()
 
+const registerLinkCopied = ref(false)
 const isValidEnvelope = ref(true)
 const isInitialLoading = ref(true)
 const isLoading = ref(false)
-const showThankYou = ref(false)
 const envelope = ref<Envelope>(
   {
+    creator: '',
     envelopeId: '',
     message: '',
     participants: [],
@@ -150,17 +220,13 @@ const envelope = ref<Envelope>(
 )
 
 const canParticipate = computed(() => !envelope.value.participants.includes(currentAccount.value))
+const registrationUrl = computed(() => `${window.location.origin}/envelope/${envelope.value.envelopeId}`)
 
 async function participateInEnvelope () {
   isLoading.value = true
 
   await participate(envelope.value.envelopeId)
-
-  showThankYou.value = true
-
-  await setTimeout(() => {
-    showThankYou.value = false
-  }, 5000)
+  await fetchEnvelope()
 
   isLoading.value = false
 }
@@ -170,6 +236,7 @@ async function fetchEnvelope () {
   await getEnvelopeById(routeEnvelopeId)
     .then(res => {
       envelope.value = {
+        creator: res.creator,
         envelopeId: res.envelopeId,
         message: res.message,
         participants: res.participants,
@@ -183,6 +250,35 @@ async function fetchEnvelope () {
   
   checkValidEnvelope(envelope.value.envelopeId)
   isInitialLoading.value = false
+}
+
+function copyRegisterURL () {
+  // https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
+  const el = document.createElement('textarea')
+  el.value = registrationUrl.value
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.opacity = '0'
+  document.body.appendChild(el)
+
+  if(document){
+    // @ts-ignore: Object is possibly 'null'.
+    const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+    if (selected) {
+      // @ts-ignore: Object is possibly 'null'.
+      document.getSelection().removeAllRanges()
+      // @ts-ignore: Object is possibly 'null'.
+      document.getSelection().addRange(selected)
+    }
+  }
+
+  registerLinkCopied.value = true
+  setTimeout(()=>{
+    registerLinkCopied.value = false
+  }, 3000)
 }
 
 function roughScale(x, base) {
