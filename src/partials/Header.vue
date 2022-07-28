@@ -3,10 +3,10 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class=" flex justify-between py-5 items-center border-b-2 border-lightRed/10">
         <div class="font-inter font-bold text-2xl cursor-pointer">
-          <div>
+          <router-link to="/">
             <span class="text-lightRed">Red</span>
             <span class="text-lightViolet">Pocket_</span>
-          </div>
+          </router-link>
         </div>
   
         <!-- Desktop Menu -->
@@ -33,13 +33,10 @@
             </router-link>
           </div>
           <div class="hover:text-lightViolet my-auto">
-            <router-link
-              to="/"
-            >
-              <button class="ease-in-out duration-300 bg-gradient-to-tr from-lightViolet to-lightRed text-darkViolet font-semibold w-max px-10 py-1 rounded-lg hover:px-12 ">
-                Start Creating
-              </button>
-            </router-link>
+            <ConnectButton
+              v-if="!currentAccount"
+              button-class="py-2 text-lg base-btn"
+            />
           </div>
         </aside>
 
@@ -97,13 +94,10 @@
                     </router-link>
                   </div>
                   <div class="hover:text-lightViolet my-auto py-4">
-                    <router-link
-                      to="/"
-                    >
-                      <button class="ease-in-out duration-300 bg-gradient-to-tr from-lightViolet to-lightRed text-darkViolet font-semibold w-max px-10 py-1 rounded-lg hover:px-12 ">
-                        Start Creating
-                      </button>
-                    </router-link>
+                    <ConnectButton
+                      v-if="!currentAccount"
+                      button-class="px-8 py-4 text-sm base-btn"
+                    />
                   </div>
                 </ul>
               </div>

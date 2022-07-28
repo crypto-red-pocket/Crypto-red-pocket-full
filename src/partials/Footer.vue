@@ -34,7 +34,7 @@
           <div class="md:col-span-10 lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
 
             <!-- 2nd block -->
-            <div class="text-sm">
+            <div class="text-sm hidden md:flex">
             </div>
 
             <div class="text-sm">
@@ -54,6 +54,9 @@
                 </li>
                 <li class="mb-1">
                   <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Gnosis</a>
+                </li>
+                <li class="mb-1">
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Polygon</a>
                 </li>
               </ul>
             </div>

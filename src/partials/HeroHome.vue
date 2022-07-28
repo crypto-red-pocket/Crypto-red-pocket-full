@@ -1,7 +1,7 @@
 <template>
   <section>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex h-[90vh] container mx-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-0">
+      <div class="grid grid-cols-2 md:flex md:h-[90vh] container mx-auto">
         <section class="flex flex-1 text-white items-center">
           <div class="">
             <h1 class="text-6xl font-semibold">Red Pocket</h1>
@@ -39,14 +39,13 @@
             </div>
           </div>
         </section>
-        <div class="flex flex-1">
+        <div class="hidden md:flex flex-1">
            <iframe
               src="https://my.spline.design/interactivespherescopy-70c62ae8fc15dbaaa057919e8e43d896/"
               frameborder="0"
               width="100%"
               height="100%"
             ></iframe>
-          <!-- <img class="" src="../images/skull-pill.png" width="340" height="624" style="max-width: 84.33%;" alt="Features illustration" /> -->
         </div>
       </div>      
     </div>
