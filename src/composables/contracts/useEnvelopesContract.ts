@@ -18,15 +18,16 @@ const Contract = computed(() => {
 
 
 async function createEnvelope(
-  tokenAmount: string,
   participantsLimit: number,
-  message: string
+  message: string,
+  creatorNickname: string,
+  tokenAmount: string,
 ) {
   const transaction =  await Contract.value
     .createEnvelope(
-      ethers.utils.parseEther(tokenAmount),
       participantsLimit,
       message,
+      creatorNickname,
       { value: ethers.utils.parseEther(tokenAmount) }
     )
       
@@ -49,8 +50,16 @@ async function getEnvelopeById(
     .getEnvelope(envelopeId)
 }
 
+async function getEnvelopesByAddress(
+  address: string,
+) {
+  return  await Contract.value
+    .getCreatorEnvelopes(address)
+}
+
 export {
   createEnvelope,
   getEnvelopeById,
-  participate
+  participate,
+  getEnvelopesByAddress
 }

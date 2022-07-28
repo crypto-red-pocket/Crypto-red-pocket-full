@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-24 md:pt-0">
-      <div class="grid grid-cols-2 md:flex md:h-[90vh] container mx-auto">
+      <div class="grid grid-cols-1 md:flex md:h-[90vh] container mx-auto">
         <section class="flex flex-1 text-white items-center">
           <div class="">
             <h1 class="text-6xl font-semibold">Red Pocket</h1>
@@ -24,7 +24,7 @@
                 v-else-if="!isLoading"
                 @click="create"
                 button-class="px-8 py-4 text-xl base-btn"
-                inner-text="Create Red Envelope"
+                inner-text="Create Red Pocket"
               />
               <div
                 v-else
@@ -57,27 +57,12 @@ import { ref } from 'vue'
 import { currentAccount } from './../composables/useWallet'
 import BaseButton from './BaseButton.vue';
 import ConnectButton from './ConnectButton.vue';
-import { createEnvelope } from './../composables/contracts/useEnvelopesContract'
+import { isOpen } from './../composables/useCreateEnvelopeForm'
 
 const isLoading = ref(false)
-const showThankYou = ref(false)
 
 async function create () {
-  isLoading.value = true
-
-  await createEnvelope(
-    '0.0000001',
-    5,
-    'Welcome to the envelope.'
-  )
-
-  showThankYou.value = true
-
-  await setTimeout(() => {
-    showThankYou.value = false
-  }, 5000)
-
-  isLoading.value = false
+  isOpen.value = true
 }
 </script>
 

@@ -9,6 +9,7 @@
 
       <!-- Page sections -->
       <HeroHome />
+      <HeroAbout />
 
       <Transition name="fade">
         
@@ -27,6 +28,7 @@
 <script setup lang="ts">
 import Header from './../partials/Header.vue'
 import HeroHome from './../partials/HeroHome.vue'
+import HeroAbout from './../partials/HeroAbout.vue'
 import TestimonialsBlocks from './../partials/TestimonialsBlocks.vue'
 import Footer from './../partials/Footer.vue'
 </script>

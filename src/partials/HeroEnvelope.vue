@@ -76,13 +76,13 @@
             Envelope Details
           </header>
 
-          <div class="flex flex-col gap-8 items-center">
+          <div class="flex flex-col gap-8 items-center w-full">
             <section class="flex flex-col gap-2 text-left w-full">
               <div class="">
                 <sub class="text-lightRed uppercase tracking-widest font-light">
                   Created By
                 </sub>
-                <h3 class="text-3xl">Hannah Redmond</h3>
+                <h3 class="text-3xl">{{ envelope.creatorNickname }}</h3>
               </div>
               <div>
                 <sub class="text-lightRed uppercase tracking-widest font-light">
@@ -90,8 +90,6 @@
                 </sub>
                 <p class="text-lg">
                   {{ envelope.message }}
-                  Thanks for joining my community! First 5 people to open this
-                  envelope will get a reward.
                 </p>
               </div>
             </section>
@@ -144,7 +142,7 @@
               class="hover:bg-darkViolet h-16 border-lightViolet/10 border-2"
             >
               <td class="pl-5 lg:px-5 text-left">
-                {{ index }}                
+                {{ index + 1 }}                
                 <span
                   v-if="currentAccount === participant"
                   class="text-white rounded-md font-bold bg-lightViolet px-2 ml-2"
@@ -161,6 +159,7 @@
             </tr>
         </tbody>
       </table>
+      <h2 v-if="!envelope.participants[0]" class="text-xl py-5 opacity-50 font-bold">NO PARTICIPANTS YET</h2>
     </div>
   </section>
   <section v-else>
@@ -189,6 +188,7 @@ import { BigNumber } from 'ethers'
 
 interface Envelope {
   creator: string,
+  creatorNickname: string,
   envelopeId: string,
   message: string,
   participants: string[],
@@ -207,6 +207,7 @@ const isInitialLoading = ref(true)
 const isLoading = ref(false)
 const envelope = ref<Envelope>(
   {
+    creatorNickname: '',
     creator: '',
     envelopeId: '',
     message: '',
@@ -236,6 +237,7 @@ async function fetchEnvelope () {
   await getEnvelopeById(routeEnvelopeId)
     .then(res => {
       envelope.value = {
+        creatorNickname: res.creatorNickname,
         creator: res.creator,
         envelopeId: res.envelopeId,
         message: res.message,
