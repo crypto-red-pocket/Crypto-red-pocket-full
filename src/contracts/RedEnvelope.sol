@@ -5,7 +5,7 @@ contract RedEnvelope {
   struct Envelopes{
     bytes envelopeId;
     address creator;
-    string creatorNickyName;
+    string creatorNickname;
     uint totalTokenAmount;
     uint tokenAmount;
     uint participantsLimit;
@@ -39,7 +39,7 @@ contract RedEnvelope {
     _envelopeId =  abi.encode(msg.sender, block.timestamp);
     envelope[_envelopeId].envelopeId = _envelopeId;
     envelope[_envelopeId].creator = msg.sender;
-    envelope[_envelopeId].creatorNickyName = _creatorNickName;
+    envelope[_envelopeId].creatorNickname = _creatorNickName;
     envelope[_envelopeId].totalTokenAmount = msg.value;
     envelope[_envelopeId].tokenAmount = msg.value;
     envelope[_envelopeId].participantsLimit = _participantsLimit;
