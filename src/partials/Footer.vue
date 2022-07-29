@@ -47,16 +47,16 @@
                   <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://mumbai.polygonscan.com/address/${contractAddressList[NetworkEnum.MUMBAI]}`">Polygon</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Neon</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://neonscan.org/address/${contractAddressList[NetworkEnum.NEON]}`">Neon</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Chronos</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.CRONOS]}`">Cronos</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Celos</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://alfajores-blockscout.celo-testnet.org/address/${contractAddressList[NetworkEnum.CELO]}`">Celo</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Gnosis</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://blockscout.com/xdai/optimism/address/${contractAddressList[NetworkEnum.GNOSIS]}`">Gnosis</a>
                 </li>
               </ul>
             </div>

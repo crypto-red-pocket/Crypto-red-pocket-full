@@ -1,5 +1,9 @@
 export enum NetworkSymbolEnum {
   'UNDEFINED' = 0,
-  'ETHER' = 4,
+  'RINKEBY ETH' = 4,
+  'XDAI' = 300,
+  'TCRO' = 338,
+  'CELO' = 44787,
   'MATIC' = 80001,
+  'NEON' = 245022926,
 }
