@@ -1,11 +1,9 @@
 require('dotenv').config();
 
-const ether = require('@openzeppelin/test-helpers/src/ether');
-//const HDWalletProvider = require('truffle-hdwallet-provider-privkey');
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const privateKeys = process.env.PRIVATE_KEYS || "";
 const mnemonic = process.env.MNEMONIC || ""
-
+const infuraProjectId = process.env.INFURA_PROJECT_ID
 module.exports = {
   plugins: ['truffle-plugin-verify'],
   networks: {
@@ -74,17 +72,19 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(
           privateKeys.split(','), // array of private keys
-          `https://rpc.gnosischain.com` // URL to infura node
+          'https://optimism.gnosischain.com'
           )
       },
-      network_id: 100,
-      gasPrice: 1500000000
+      network_id: 300,
+      timeoutBlocks: 200,
+      skipDryRun: true
+      //gasPrice: 1500000000
     },
     cronos: {
       provider: function() {
         return new HDWalletProvider(
           privateKeys.split(','), // array of private keys
-          `wss://cronos-testnet-3.crypto.org:8546` // URL to infura node
+          `wss://cronos-testnet-3.crypto.org:8546` // URL to cronos RPC
           )
       },
       network_id: "*",
@@ -94,7 +94,7 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(
           privateKeys.split(','), // array of private keys
-          `https://rinkeby.infura.io/v3/edcc63a917694ec0af55769d6a40839f` // URL to infura node
+          `https://rinkeby.infura.io/v3/`+infuraProjectId // URL to infura rpc
           )
       },
       network_id: 4

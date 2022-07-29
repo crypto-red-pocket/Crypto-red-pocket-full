@@ -8,7 +8,12 @@
     "truffle-compile": "truffle compile",
     "truffle-deploy-development": "truffle migrate --network development",
     "truffle-verify-rinkeby": "truffle run verify RedEnvelope --network rinkeby",
-    "truffle-migrate-rinkeby": "cross-env NETWORK_ID=4 truffle migrate --reset --network rinkeby"
+    "truffle-migrate-rinkeby": "cross-env NETWORK_ID=4 truffle migrate --reset --network rinkeby",
+    "truffle-migrate-mumbai": "cross-env NETWORK_ID=8001 truffle migrate --reset --network mumbai",
+    "truffle-migrate-neon": "cross-env NETWORK_ID=245022926 truffle migrate --reset --network neon",
+    "truffle-migrate-celo": "cross-env NETWORK_ID=44787 truffle migrate --reset --network celo",
+    "truffle-migrate-gnosis": "cross-env NETWORK_ID=300 truffle migrate --reset --network gnosis",
+    "truffle-migrate-cronos": "cross-env NETWORK_ID=338 truffle migrate --reset --network cronos"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.0",
