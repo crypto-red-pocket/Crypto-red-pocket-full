@@ -15,7 +15,7 @@
           @click="copyRegisterURL"
           :class="registerLinkCopied ? 'opacity-50 pointer-events-none':''"
           button-class="px-8 py-4 text-xl base-btn text-white transition-all"
-          :inner-text="registerLinkCopied ? '🔗 LINK COPIED 🔗' : '🔗 SHARE POCKET LINK 🔗'"
+          :inner-text="registerLinkCopied ? '🔗 LINK COPIED 🔗' : '🔗 SHARE PACKET LINK 🔗'"
         />
       </div>
       <div class="grid grid-cols-1 lg:flex md:min-h-[60vh] container mx-auto pb-20 pt-12 gap-16">
