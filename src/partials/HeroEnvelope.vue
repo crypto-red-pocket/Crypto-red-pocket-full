@@ -23,14 +23,8 @@
           <div class="">
             <h1 class="text-6xl font-semibold">Welcome</h1>
             <sub class="text-2xl text-lightViolet">
-              You have been invited to a Red Pocket
+              You have been invited to a Red Packet
             </sub>
-            <p class="text-lightGrey mt-5">
-              An envelope is Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-              laboriosam aliquid unde ipsam, similique alias magnam quis eum
-              numquam saepe dignissimos minus magni natus quae corporis
-              architecto aliquam voluptas.
-            </p>
             <div class="flex flex-col sm:flex-row justify-start max-w-sm mx-auto sm:max-w-md md:mx-0 pt-6">
               <ConnectButton
                 v-if="!currentAccount"
@@ -44,7 +38,7 @@
               <BaseButton
                 v-else-if="!isLoading && (envelope.participants.length >= envelope.participantsLimit.toNumber())"
                 button-class="px-8 py-4 text-xl base-btn pointer-events-none opacity-50"
-                inner-text="Pocket is full"
+                inner-text="Packet is full"
               />
               <BaseButton
                 v-else-if="!isLoading && canParticipate"

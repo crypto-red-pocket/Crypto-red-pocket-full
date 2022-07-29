@@ -25,7 +25,7 @@
             <router-link class="inline-block" to="/" aria-label="Cruip">
               <div>
                 <span class="text-lightRed">Red</span>
-                <span class="text-lightViolet">Pocket_</span>
+                <span class="text-lightViolet">Packet_</span>
               </div>
             </router-link>
           </div>
@@ -114,7 +114,7 @@
           </ul>
 
           <!-- Copyrights note -->
-          <div class="text-gray-600 dark:text-gray-400 text-sm mr-4">&copy; 2022 Red Pocket. All rights reserved.</div>
+          <div class="text-gray-600 dark:text-gray-400 text-sm mr-4">&copy; 2022 Red Packet. All rights reserved.</div>
 
         </div>
 

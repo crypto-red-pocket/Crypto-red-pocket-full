@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto w-2/3 text-center pt-10">   
     <header class="text-sm md:text-4xl text-lightViolet font-semibold pb-10">
-      Create A New Pocket
+      Create A New Packet
     </header>
     <!-- {/* Form for creating envelope */} -->
     <form action="" class="pb-20 w-full gap-x-20 gap-y-5 grid grid-cols-1 md:grid-cols-2 ">
@@ -48,7 +48,7 @@
             htmlFor="envelopeAmount"
             class="text-lightRed uppercase tracking-widest font-light"
           >
-            Total Pocket Amount
+            Total Packet Amount
           </label>
           <input
             v-model="totalPocketAmount"
@@ -128,7 +128,7 @@
             v-else-if="!isLoading"
             @click="create"
             button-class="px-8 py-4 text-xl base-btn"
-            inner-text="Create Red Pocket"
+            inner-text="Create Red Packet"
           />
           <div
             v-else

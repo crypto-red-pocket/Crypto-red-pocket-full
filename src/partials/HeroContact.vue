@@ -1,34 +1,49 @@
 <template>
-  <section class="relative">
+  <div class="mx-auto text-center w-2/3 pb-10">
+    <div class="flex text-left items-center">
+      <div class="flex flex-1 flex-col justify-start">
+        <h2 class="text-4xl text-lightViolet font-semibold pb-5">
+          Create An Envelope!
+        </h2>
+        <p class="text-lightGrey pb-5">
+          The crypto inside the packet will be distributed to limited amount of winners defined by packet creator.
+        </p>
 
-    <!-- Background image -->
-    <div class="absolute inset-0 h-128 pt-16 box-content -z-1">
-      <img class="absolute inset-0 w-full h-full object-cover opacity-25" src="../images/hero-bg-03.jpg" width="1440" height="577" alt="About" />
-      <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900" aria-hidden="true"></div>
-    </div>
-
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="pt-32 pb-12 md:pt-40 md:pb-20">
-        <div class="text-center">
-          <div class="relative flex justify-center items-center">
-            <div class="relative inline-flex items-start" data-aos="fade-up">
-              <img class="opacity-50" src="../images/about-hero.jpg" width="768" height="432" alt="About hero" />
-              <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900" aria-hidden="true"></div>
-            </div>
-            <div class="absolute" data-aos="fade-down">
-              <h1 class="h1 lg:text-6xl font-red-hat-display">Make your own <span class="text-teal-500">way</span></h1>
-            </div>
-            <div class="absolute bottom-0 -mb-8 w-0.5 h-16 bg-gray-300 dark:bg-gray-700" aria-hidden="true"></div>
-          </div>
-        </div>
+        <ConnectButton
+          v-if="!currentAccount"
+          button-class="px-8 py-4 text-xl base-btn"
+        />
+        <BaseButton
+          v-else-if="!isLoading"
+          @click="create"
+          button-class="px-8 py-4 text-xl base-btn"
+          inner-text="Create Red Packet"
+        />
+      </div>
+      <div class="flex flex-1">
+        <img class="" src="/images/envelop-illustration.svg" alt="Envelope Image" />
+        <a
+          class="hidden"
+          href="https://www.freepik.com/vectors/email-notification"
+        >
+          Email notification vector created by upklyak - www.freepik.com
+        </a>
       </div>
     </div>
-
-  </section>
+  </div>
 </template>
 
-<script>
-export default {
-  name: 'HeroAbout',
+<script setup lang="ts">
+import { isOpen } from './../composables/useCreateEnvelopeForm'
+import { currentAccount } from './../composables/useWallet'
+import ConnectButton from './ConnectButton.vue';
+import BaseButton from './BaseButton.vue';
+
+import { ref } from 'vue'
+
+const isLoading = ref(false)
+
+async function create () {
+  isOpen.value = true
 }
 </script>

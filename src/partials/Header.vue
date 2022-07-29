@@ -5,7 +5,7 @@
         <div class="font-inter font-bold text-2xl cursor-pointer">
           <router-link to="/">
             <span class="text-lightRed">Red</span>
-            <span class="text-lightViolet">Pocket_</span>
+            <span class="text-lightViolet">Packet_</span>
           </router-link>
         </div>
   
@@ -67,7 +67,7 @@
                 <div class="font-inter font-bold text-2xl cursor-pointer">
                   <div>
                     <span class="text-lightRed">Red</span>
-                    <span class="text-lightViolet">Pocket_</span>
+                    <span class="text-lightViolet">Packet_</span>
                   </div>
                 </div>
                 <!-- Links -->
