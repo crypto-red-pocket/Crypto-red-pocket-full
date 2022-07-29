@@ -9,11 +9,7 @@
               DeFi Payments for your loved ones!
             </sub>
             <p class="text-lightGrey mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-              laboriosam aliquid unde ipsam, similique alias magnam quis eum
-              numquam saepe dignissimos minus magni natus quae corporis
-              architecto aliquam voluptas. Quasi, eos? Animi quod perferendis
-              exercitationem iste molestias tempore ad voluptatum.
+              Red Pocket aims to gamify and make it easier to send gifts to their friends and family. It will also create a network effect and onboard the next billion people to web3 and blockchain. We are a multichain project and currently live on Polygon Mumbai, Celo, Cronos, Gnosis, Neon, and Ethereum.
             </p>
             <div class="flex flex-col sm:flex-row justify-start max-w-sm mx-auto sm:max-w-md md:mx-0 pt-6">
               <ConnectButton

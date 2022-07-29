@@ -1,34 +1,81 @@
 <template>
-  <section class="relative">
+  <div class="mx-auto text-center w-2/3 py-24">
+    <h2 class="text-4xl text-lightViolet font-semibold">
+      A Global Team Of Blockchain Experts!
+    </h2>
 
-    <!-- Background image -->
-    <div class="absolute inset-0 h-128 pt-16 box-content -z-1">
-      <img class="absolute inset-0 w-full h-full object-cover opacity-25" src="../images/hero-bg-03.jpg" width="1440" height="577" alt="About" />
-      <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900" aria-hidden="true"></div>
+    <div class="gap-5 py-10 grid lg:grid-cols-5 grid-cols-2">
+      <a
+        v-for="(participant, index) in participants"
+        :href="participant.linkedInUrl"
+        :key="index"
+        target="_blank"
+        class="py-10 rounded-xl w-full  text-lightGrey
+        hover:text-lightRed hover:-translate-y-2 ease-in-out duration-300  drop-shadow-lg cursor-pointer"
+      >
+        <img
+          class="h-36 mx-auto hover:scale-125 ease-in-out duration-300"
+          :src="participant.img"
+          :alt="participant.alt"
+        />
+        <header class="text-2xl py-5">{{ participant.name }}</header>
+        <p class="text-lightGrey">{{ participant.role }}</p>
+        <p class="text-lightGrey">{{ participant.country }}</p>
+      </a>
     </div>
-
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="pt-32 pb-12 md:pt-40 md:pb-20">
-        <div class="text-center">
-          <div class="relative flex justify-center items-center">
-            <div class="relative inline-flex items-start" data-aos="fade-up">
-              <img class="opacity-50" src="../images/about-hero.jpg" width="768" height="432" alt="About hero" />
-              <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900" aria-hidden="true"></div>
-            </div>
-            <div class="absolute" data-aos="fade-down">
-              <h1 class="h1 lg:text-6xl font-red-hat-display">Make your own <span class="text-teal-500">way</span></h1>
-            </div>
-            <div class="absolute bottom-0 -mb-8 w-0.5 h-16 bg-gray-300 dark:bg-gray-700" aria-hidden="true"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
+  </div>
 </template>
 
-<script>
-export default {
-  name: 'HeroAbout',
-}
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const participants = ref([
+  {
+    name: "Raushan",
+    fullName: "Raushan Sharma",
+    img: '/images/person1.png',
+    alt: 'Team1',
+    role: "Front-end developer",
+    country: "India",
+    linkedInUrl: "https://www.linkedin.com/in/raushansharma/",
+  },
+  {
+    name: "Elad",
+    fullName: "Elad Mintzer",
+    img: '/images/person2.png',
+    alt: 'Team2',
+    role: "Business",
+    country: "UK",
+    linkedInUrl: "https://www.linkedin.com/in/eladmi/",
+  },
+  {
+    name: "Shalu",
+    fullName: "Shalu Panwar",
+    img: '/images/personFemale4.png',
+    alt: 'Team4',
+    role: "Smart contract developer",
+    country: "India",
+    linkedInUrl: "https://www.linkedin.com/in/shalupanwar/",
+  },
+  {
+    name: "David",
+    fullName: "Juan David Polanco Rojas",
+    img: '/images/person2.png',
+    alt: 'Team3',
+    role: "Smart contract developer",
+    country: "Spain",
+    linkedInUrl:
+      "https://www.linkedin.com/in/juan-david-polanco-rojas-6a06aa12a/",
+  },
+  {
+    name: "Enrique",
+    fullName: "Enrique Peña",
+    img: '/images/person5.png',
+    alt: 'Team5',
+    role: "Full Stack developer",
+    country: "Colombia",
+    linkedInUrl: "https://www.linkedin.com/in/enpepolicy/",
+  }
+])
+
 </script>
