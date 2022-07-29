@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto w-2/3 text-center pt-10">   
     <header class="text-sm md:text-4xl text-lightViolet font-semibold pb-10">
-      Create A New Envelope
+      Create A New Pocket
     </header>
     <!-- {/* Form for creating envelope */} -->
     <form action="" class="pb-20 w-full gap-x-20 gap-y-5 grid grid-cols-1 md:grid-cols-2 ">
@@ -176,7 +176,9 @@ async function create () {
     message.value,
     name.value,
     String(totalPocketAmount.value)
-  )
+  ).catch(() => {
+    isLoading.value = false
+  })
 
   await getEnvelopesByAddress(currentAccount.value)
     .then(res =>{
