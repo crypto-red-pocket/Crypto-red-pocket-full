@@ -189,9 +189,12 @@ async function create () {
     })
 }
 
-function setSelectedNetwork (event) {
+async function setSelectedNetwork (event) {
   console.log(event.target.value)
   switchNetwork(event.target.value)
+    .catch((err) => {
+      router.push({ path: `/network-not-found/${event.target.value}` })
+    })
 }
 
 // Helper

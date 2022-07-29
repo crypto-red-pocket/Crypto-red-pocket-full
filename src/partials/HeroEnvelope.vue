@@ -18,7 +18,7 @@
           :inner-text="registerLinkCopied ? '🔗 LINK COPIED 🔗' : '🔗 SHARE POCKET LINK 🔗'"
         />
       </div>
-      <div class="grid grid-cols-1 lg:flex md:min-h-[70vh] container mx-auto pb-20 pt-12 gap-16">
+      <div class="grid grid-cols-1 lg:flex md:min-h-[60vh] container mx-auto pb-20 pt-12 gap-16">
         <section class="flex flex-1 text-white">
           <div class="">
             <h1 class="text-6xl font-semibold">Welcome</h1>
