@@ -1,0 +1,72 @@
+# [Nafstars - Front End](https://manager.nafstars.com/en)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-red.svg" alt="Version">
+</p>
+
+<br>
+
+<p align="center" >
+  <img align="center" src="./public/favicon.png" width="200">
+</p>
+
+<br>
+
+## 💬 **About the Frontend**
+
+Nafstars Manager has a responsive Single Page Application (SPA) Frontend build with the Vue.js (V3) ecosystem and Typescript. Vue's Composition API is heavivly used throughout the application.
+
+> [**Vite**](https://vitejs.dev/), We use the latest Vite version, which aims to reduce project configuration to the minimum possible. Build and roll-up configuration is organized and distributed on several files: package.json, vite.config.json.
+
+> [**Tailwind**](https://tailwindcss.com/) A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup. Tailwind is used along Postcss in the style snippet on Vue File Components. Root configuration can be found in: tailwind.config.js, postcss.config.js and src/assets/index.postcss .
+
+<br>
+
+## 🚀 **Onboarding**
+
+You will need a Windows, Mac or Linux computer with command line access and permission to install new system packages. An active Internet connection is required to install the following required software:
+
+- Node https://nodejs.org/en/
+- NPM https://www.npmjs.com/
+- Yarn https://yarnpkg.com/
+
+To initialize the project, using the terminal, navigate to the folder containing the project and run the `yarn install` command. This will install all the necessary packages and prepare your project for local development. Then you can use `yarn dev`
+<br>
+
+## 📄 **Smart Contracts Inventory**
+
+<sup>
+
+| Contract Name          | Network | Testnet Address                            | Mainnet Address                            |
+| :--------------------- | :------ | :----------------------------------------- | :----------------------------------------- |
+| Nstars Erc20           | Polygon | 0x9208e7641f3b424be1a9af8db03a9b3901212dde | 0x559f80C6f05322067455DeF52114109150F5F19C |
+| Vesting                | Polygon | 0x955c14030c994FdB5187Bec1D555c74497371Ec0 | 0xa1e7200BA75777e2e1aE941833a43954cA8F1070 |
+| Reveal                 | Polygon | 0x932eCc991d952287542F8e4D7D4439d0Cc1D5Bb4 | 0x1784EEd0ECCf4A352ca1E0570E340d8651993c09 |
+| Pack                   | Polygon | Check                                      | 0x75fD5e507E807d98e248DC32E470C91DB98A623c |
+| Cards                  | Polygon | Check                                      | 0x5388b00677A0C0624DD0dC8BCbBF5b388599c9c6 |
+| Staking (One by panel) | Polygon | 0xdff9a9c7679b3915e179114a03754f2a1e6d67b9 | 0xa1e7200ba75777e2e1ae941833a43954ca8f1070 |
+| Avatar                 | ETH L1  | Check                                      | 0x75fD5e507E807d98e248DC32E470C91DB98A623c |
+
+</sup>
+<br>
+
+## 📓 **Additional Notes**
+
+**Commit Standard**. The project aims to standardize commits as much as possible, therefore we invite you to use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+
+**Blockchain consumption through reactive Composition Api architecture**. Since blockchain read/write is made along the whole application, it exists a central module based on Vue.js Composition API on the src/composables/useWallet.ts file in charge of managing that connection for reading data and signing it. This approach enable to export the provider aswell as the connection functionalities throughout the app. When including a new contract to the project you should add it in the src/composables/contracts folder and import the reactive (or whatever you need) variables needed.
+
+<br>
+  
+## 🐞 **Known bugs**
+
+- Metamask Mobile browser on Android blocks the provider usage when a redirect happens with an error status code. Since the frontend is currently deployed to a gcp instance, and it doesn't allow you to configure the status code, every nested route that is opened directly from this browser will block every interaction between the front-end and the blockchain. This doesn't happen with the IOS version of metamask browser.
+
+<br>
+<br>
+
+## 💻 **Browser Support**
+
+Currently, we aim to support the latest two versions of the following browsers:
+
+<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/firefox.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/edge.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/safari.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/opera.png" width="64" height="64">
