@@ -44,7 +44,7 @@
                 v-else-if="!isLoading && canParticipate"
                 @click="participateInEnvelope"
                 button-class="px-8 py-4 text-xl base-btn"
-                inner-text="Participate"
+                inner-text="Open Your Gift"
               />
               <div
                 v-else

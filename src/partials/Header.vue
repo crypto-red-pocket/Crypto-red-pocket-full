@@ -13,23 +13,23 @@
         <aside class="hidden md:flex gap-10 text-lg">
           <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
             <router-link
-              to="/"
+              :to="{ path: '/', hash: '#about' }"
             >
               About
             </router-link>
           </div>
           <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
             <router-link
-              to="/"
+              :to="{ path: '/', hash: '#team' }"
             >
               Team
             </router-link>
           </div>
           <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
             <router-link
-              to="/"
+              :to="{ path: '/', hash: '#create' }"
             >
-              Contact
+              Create
             </router-link>
           </div>
           <div class="hover:text-lightViolet my-auto">

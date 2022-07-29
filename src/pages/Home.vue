@@ -9,9 +9,9 @@
 
       <!-- Page sections -->
       <HeroHome />
-      <HeroAbout />
-      <HeroTeam />
-      <HeroContact />
+      <HeroAbout id="about"/>
+      <HeroTeam id="team"/>
+      <HeroContact id="create"/>
     </main>
 
     <!-- Site footer -->

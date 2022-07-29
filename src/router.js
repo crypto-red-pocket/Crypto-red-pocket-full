@@ -27,7 +27,7 @@ const router = createRouter({
           }
 
           if (to.hash) {
-            return { selector: to.hash };
+            return { el: to.hash };
           }
         return { x: 0, y: 0 }
       }
