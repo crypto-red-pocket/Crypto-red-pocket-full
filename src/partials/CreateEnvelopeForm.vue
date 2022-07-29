@@ -76,7 +76,7 @@
             placeholder="Type your answer here"
           />
         </div>
-        <div class="grid grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
           <div class="col-span-1">
             <div
               htmlFor="maxParticipants"
@@ -100,21 +100,22 @@
                   :value="NetworkEnum[element]"
                 >
                   {{ element }}
+                  {{ element === 'NEON' ? '(BETA)' : ''  }}
                 </option>
             </select>
           </div>
   
-          <div class="w-full flex flex-col gap-2 text-left col-span-2">
+          <div class="w-full flex flex-col gap-2 text-left col-span-1">
             <label
               htmlFor="userWalletAddress"
               class="text-lightRed uppercase tracking-widest font-light"
             >
-              Connected Wallet Address
+              Connected Address
             </label>
             <div
-              class="text-2xl font-bold text-white/80"
+              class="text-xl font-bold text-white/80"
             >
-              {{ truncateAddress(currentAccount, 18) }}
+              {{ truncateAddress(currentAccount, 16) }}
             </div>
           </div>
         </div>
@@ -146,7 +147,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import BaseButton from './BaseButton.vue';
@@ -213,5 +214,4 @@ function cleanForm() {
   totalPocketAmount.value = undefined
   maxParticipants.value = 1
 }
-
 </script>
