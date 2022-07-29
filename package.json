@@ -18,6 +18,7 @@
     "@truffle/hdwallet-provider": "^2.0.6",
     "aos": "^3.0.0-beta.6",
     "big-number": "^2.0.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "ethers": "^5.6.9",
     "multi-sol-verifier": "^1.0.1",
