@@ -96,7 +96,7 @@
                 <sub class="text-lightRed uppercase tracking-widest font-light">
                   Total Prize Amt.
                 </sub>
-                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(BigNumber.from(envelope.totalTokenAmount).toNumber()) }} {{ currentNetworkSymbol }}</p>
+                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(envelope.totalTokenAmount) }} {{ currentNetworkSymbol }}</p>
               </div>
               <div>
                 <sub class="text-lightRed uppercase tracking-widest font-light">
