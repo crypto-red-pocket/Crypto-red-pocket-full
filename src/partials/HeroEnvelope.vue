@@ -36,7 +36,7 @@
                 inner-text="You have participated"
               />
               <BaseButton
-                v-else-if="!isLoading && (envelope.participants.length >= envelope.participantsLimit.toNumber())"
+                v-else-if="!isLoading && (envelope.participants.length >= BigNumber.from(envelope.participantsLimit).toNumber())"
                 button-class="px-8 py-4 text-xl base-btn pointer-events-none opacity-50"
                 inner-text="Packet is full"
               />
@@ -96,13 +96,13 @@
                 <sub class="text-lightRed uppercase tracking-widest font-light">
                   Total Prize Amt.
                 </sub>
-                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(envelope.totalTokenAmount.toNumber()) }} {{ currentNetworkSymbol }}</p>
+                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(BigNumber.from(envelope.totalTokenAmount).toNumber()) }} {{ currentNetworkSymbol }}</p>
               </div>
               <div>
                 <sub class="text-lightRed uppercase tracking-widest font-light">
                   Participants
                 </sub>
-                <p class="text-2xl pt-1">{{`${envelope.participants.length} / ${envelope.participantsLimit.toNumber()}`}}</p>
+                <p class="text-2xl pt-1">{{`${envelope.participants.length} / ${BigNumber.from(envelope.participantsLimit).toNumber()}`}}</p>
               </div>
 
               <!-- <div>
@@ -149,7 +149,7 @@
               >
                 {{ truncateAddress(participant, 15) }}
               </td>
-              <td class="lg:px-5 text-center">{{ ethers.utils.formatEther(envelope.participantsPrize[index].toNumber()) }} {{ currentNetworkSymbol }}</td>
+              <td class="lg:px-5 text-center">{{ ethers.utils.formatEther(BigNumber.from(envelope.participantsPrize[index]).toNumber()) }} {{ currentNetworkSymbol }}</td>
             </tr>
         </tbody>
       </table>

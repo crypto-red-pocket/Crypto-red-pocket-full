@@ -20,7 +20,17 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      scrollBehavior(to, from, savedPosition) {
+          if (savedPosition) {
+            return savedPosition;
+          }
+
+          if (to.hash) {
+            return { selector: to.hash };
+          }
+        return { x: 0, y: 0 }
+      }
     },
     {
       path: '/envelope/:envelopeId/:networkId',

@@ -37,6 +37,7 @@
         </section>
         <div class="hidden md:flex flex-1">
            <iframe
+              class="overflow-hidden"
               src="https://my.spline.design/interactivespherescopy-70c62ae8fc15dbaaa057919e8e43d896/"
               frameborder="0"
               width="100%"
