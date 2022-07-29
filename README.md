@@ -39,12 +39,12 @@ To initialize the project, using the terminal, navigate to the folder containing
 
 | Contract          | Network | Testnet Address                            |
 | :--------------------- | :------ | :----------------------------------------- |
-| RedEnvelope            | Neon    | neonscan.org/address/0x8487D75c74dcAaF05a8cDf5EF1a27BbB59028D9e#contract       |
-| RedEnvelope            | Polygon | mumbai.polygonscan.com/address/0x2490015d3937277Cd2826705a971d5ef4cB0be9f#code | 
-| RedEnvelope            | CELO    | alfajores-blockscout.celo-testnet.org/address/0xd94B99d4666920dfFa1dF3d89F4B34024003FE4e/contracts | 
-| RedEnvelope            | Gnosis | blockscout.com/xdai/optimism/address/0x4a75774E1308BFB81C70F79eC5A2E04985FeF5Bf/contracts#address-tabs                                      | 
-| RedEnvelope            | Cronos | testnet.cronoscan.com/address/0xDC57f9E61d8E3D61b4cC2B94793aF5C2E2cd8A24#code                                      |
-| RedEnvelope            | Ethereum | rinkeby.etherscan.io/address/0x99E6b21Dfb5eB7768158cfc66133A1791C4A98aC#code |
+| RedEnvelope            | Neon    | [0x8487D75c74dcAaF05a8cDf5EF1a27BbB59028D9e][neon-url]      |
+| RedEnvelope            | Polygon | [0x2490015d3937277Cd2826705a971d5ef4cB0be9f][mumbai-url] | 
+| RedEnvelope            | CELO    | [0xd94B99d4666920dfFa1dF3d89F4B34024003FE4e][celo-url] | 
+| RedEnvelope            | Gnosis  | [0x4a75774E1308BFB81C70F79eC5A2E04985FeF5Bf][gnosis-url]   | 
+| RedEnvelope            | Cronos | [0xDC57f9E61d8E3D61b4cC2B94793aF5C2E2cd8A24][cronos-url] |
+| RedEnvelope            | Ethereum | [0x99E6b21Dfb5eB7768158cfc66133A1791C4A98aC][ethereum-url] |
 
 </sup>
 <br>
@@ -80,3 +80,9 @@ Currently, we aim to support the latest two versions of the following browsers:
 
 <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/firefox.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/edge.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/safari.png" width="64" height="64"> <img src="https://cdn.vuetifyjs.com/images/browser/opera.png" width="64" height="64">
 
+[neon-url]: neonscan.org/address/0x8487D75c74dcAaF05a8cDf5EF1a27BbB59028D9e#contract
+[mumbai-url]: mumbai.polygonscan.com/address/0x2490015d3937277Cd2826705a971d5ef4cB0be9f#code
+[celo-url]: alfajores-blockscout.celo-testnet.org/address/0xd94B99d4666920dfFa1dF3d89F4B34024003FE4e/contracts
+[gnosis-url]: blockscout.com/xdai/optimism/address/0x4a75774E1308BFB81C70F79eC5A2E04985FeF5Bf/contracts#address-tabs 
+[cronos-url]: testnet.cronoscan.com/address/0xDC57f9E61d8E3D61b4cC2B94793aF5C2E2cd8A24#code
+[ethereum-url]:rinkeby.etherscan.io/address/0x99E6b21Dfb5eB7768158cfc66133A1791C4A98aC#code
