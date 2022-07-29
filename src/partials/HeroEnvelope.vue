@@ -72,7 +72,7 @@
             hover:scale-105 hover:translate-x-2 ease-in-out duration-700
             drop-shadow-2xl relative"
         >
-          <header class="text-lg text-lightViolet uppercase tracking-widest pb-8">
+          <header class="text-xl text-lightViolet uppercase tracking-widest pb-8">
             Envelope Details
           </header>
 

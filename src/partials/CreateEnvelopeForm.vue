@@ -190,10 +190,10 @@ async function create () {
 }
 
 async function setSelectedNetwork (event) {
-  console.log(event.target.value)
-  switchNetwork(event.target.value)
+  await switchNetwork(event.target.value)
     .catch((err) => {
       router.push({ path: `/network-not-found/${event.target.value}` })
+      isOpen.value = false
     })
 }
 

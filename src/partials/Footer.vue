@@ -41,22 +41,22 @@
               <h6 class="font-medium uppercase mb-2">Contract</h6>
               <ul>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Rinkeby</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Rinkeby</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Neon</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://mumbai.polygonscan.com/address/${contractAddressList[NetworkEnum.MUMBAI]}`">Polygon</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Chronos</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Neon</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Celos</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Chronos</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Gnosis</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Celos</a>
                 </li>
                 <li class="mb-1">
-                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${redEnvelopeContract}`">Polygon</a>
+                  <a class="text-gray-600 dark:text-gray-400 hover:underline transition duration-150 ease-in-out" target="_blank" :href="`https://rinkeby.etherscan.io/address/${contractAddressList[NetworkEnum.RINKEBY]}`">Gnosis</a>
                 </li>
               </ul>
             </div>
@@ -124,7 +124,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import { NetworkEnum } from '../composables/network.enum' 
 import addressList from '../../contract-addresses.json'
 
-const redEnvelopeContract = addressList[4]
+const contractAddressList = ref(addressList)
 </script>

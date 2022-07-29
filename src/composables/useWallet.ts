@@ -20,7 +20,7 @@ const provider = computed(() => {
 })
 
 const currentNetworkSymbol = computed(() => {
-  return NetworkSymbolEnum[currentNetworkId.value]
+  return NetworkSymbolEnum[currentNetworkId.value] || 'ETHERS'
 })
 
 const isValidNetwork = computed(() => {
@@ -99,7 +99,7 @@ function validateAddress(address: string) {
 }
 
 async function switchNetwork(network: NetworkEnum) {
-  console.log(network)
+  // console.log(network)
   await provider.value
     .send("wallet_switchEthereumChain", [
       {
