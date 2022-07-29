@@ -12,7 +12,7 @@
             Create Envelopes
           </header>
           <section class="px-10">
-            Decide the token amount to give away, submit custom message and create your Red packet.
+            Decide the token amount to give away, submit custom message and create your Multi-Chain Red packet.
           </section>
         </div>
 
@@ -33,7 +33,7 @@
             Give Them Crypto
           </header>
           <section class="px-10">
-            Click on link and receive a random amount of crypto inside the pocket.  Harry up! Claims are limited!.
+            Click on link and receive a random amount of crypto inside the pocket.  Hurry up! Claims are limited!.
           </section>
         </div>
       </div>

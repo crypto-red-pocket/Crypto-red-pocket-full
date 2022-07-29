@@ -6,10 +6,10 @@
           <div class="">
             <h1 class="text-6xl font-semibold">Red Packet</h1>
             <sub class="text-2xl text-lightViolet">
-              DeFi Payments for your loved ones!
+              Multi-Chain DeFi Payments for your loved ones!
             </sub>
             <p class="text-lightGrey mt-5">
-              Red Packet aims to gamify and make it easier to send gifts to their friends and family. It will also create a network effect and onboard the next billion people to web3 and blockchain. We are a multichain project and currently live on Polygon Mumbai, Celo, Cronos, Gnosis, Neon, and Ethereum.
+              Red Packet aims to gamify and make it easier to send gifts to their friends and family. It will also create a Multi-Chain  network effect and onboard the next billion people to web3 and blockchain. We are a multichain project and currently live on Polygon Mumbai, Celo, Cronos, Gnosis, Neon, and Ethereum.
             </p>
             <div class="flex flex-col sm:flex-row justify-start max-w-sm mx-auto sm:max-w-md md:mx-0 pt-6">
               <ConnectButton
