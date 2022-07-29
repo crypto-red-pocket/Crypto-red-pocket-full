@@ -1,4 +1,5 @@
 export enum NetworkEnum {
   'NO_NET' = 0,
-  'ETHEREUM_TEST_NET' = 4
+  'RINKEBY' = 4,
+  'MUMBAI' = 80001,
 }

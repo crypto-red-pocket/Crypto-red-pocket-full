@@ -20,7 +20,7 @@ const provider = computed(() => {
 
 const isValidNetwork = computed(() => {
   return (
-    currentNetworkId.value === NetworkEnum.ETHEREUM_TEST_NET
+    currentNetworkId.value === NetworkEnum.RINKEBY
   )
 })
 
@@ -93,10 +93,21 @@ function validateAddress(address: string) {
   return false
 }
 
+async function switchNetwork(network: NetworkEnum) {
+  await provider.value
+    .send("wallet_switchEthereumChain", [
+      {
+        chainId: `0x${network.toString(16)}`,
+      },
+    ])
+  ;
+}
+
 export {
   currentAccount,
   currentNetworkId,
   isValidNetwork,
+  switchNetwork,
   provider,
   validateAddress,
   connect,

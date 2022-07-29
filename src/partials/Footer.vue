@@ -124,7 +124,7 @@
 </template>
 
 <script setup lang="ts">
-import { RedEnvelope as address } from '../../contract-addresses.json'
+import addressList from '../../contract-addresses.json'
 
-const redEnvelopeContract = address
+const redEnvelopeContract = addressList[4]
 </script>

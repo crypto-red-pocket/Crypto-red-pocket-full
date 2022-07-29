@@ -11,6 +11,12 @@
   
         <!-- Desktop Menu -->
         <aside class="hidden md:flex gap-10 text-lg">
+          <div
+            @click="switchNetwork(44787)"
+            class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer"
+          >
+            Connec
+          </div>
           <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
             <router-link
               to="/"
@@ -110,9 +116,10 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
 import Dropdown from './../utils/Dropdown.vue'
 import ConnectButton from './ConnectButton.vue';
+import { switchNetwork } from '../composables/useWallet'
 
 export default {
   name: 'Header',
@@ -127,12 +134,12 @@ export default {
     }
   },
   methods: {
+    switchNetwork,
     clickOutside(e) {
       if (!this.mobileNavOpen || this.$refs.mobileNav.contains(e.target) || this.$refs.hamburger.contains(e.target)) return
       this.mobileNavOpen = false
     },
     keyPress() {
-      if (!this.mobileNavOpen || event.keyCode !== 27) return
       this.mobileNavOpen = false
     },
 		handleLights: function() {
@@ -160,7 +167,6 @@ export default {
   },
   beforeUnmount() {
     document.removeEventListener('click', this.clickOutside)
-    document.removeEventListener('keydown', this.keyPress)
   }
 };
 </script>
