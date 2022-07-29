@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './pages/Home.vue'
-import NFTCollection from './pages/Envelope.vue'
+import Envelope from './pages/Envelope.vue'
+import PageNetworkNotFound from './pages/PageNetworkNotFound.vue'
 import PageNotFound from './pages/PageNotFound.vue'
 
 const routerHistory = createWebHistory()
@@ -22,8 +23,12 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/envelope/:envelopeId',
-      component: NFTCollection
+      path: '/envelope/:envelopeId/:networkId',
+      component: Envelope
+    },
+    {
+      path: '/network-not-found/:networkId',
+      component: PageNetworkNotFound
     },
     {
       path: '/:pathMatch(.*)*',

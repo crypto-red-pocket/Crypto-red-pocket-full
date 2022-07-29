@@ -177,14 +177,15 @@
 
 <script lang="ts" setup>
 import { ethers } from 'ethers'
-import { ref, computed, onMounted } from 'vue'
-import { currentAccount } from '../composables/useWallet'
+import { ref, computed, watch } from 'vue'
+import { currentAccount, currentNetworkId, switchNetwork } from '../composables/useWallet'
 import BaseButton from './BaseButton.vue';
 import ConnectButton from './ConnectButton.vue';
 import { truncateAddress } from '../utils';
 import { participate, getEnvelopeById } from '../composables/contracts/useEnvelopesContract'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { BigNumber } from 'ethers'
+import { NetworkEnum } from '../composables/network.enum'
 
 interface Envelope {
   creator: string,
@@ -200,6 +201,7 @@ interface Envelope {
 }
 
 const route = useRoute()
+const router = useRouter()
 
 const registerLinkCopied = ref(false)
 const isValidEnvelope = ref(true)
@@ -221,7 +223,7 @@ const envelope = ref<Envelope>(
 )
 
 const canParticipate = computed(() => !envelope.value.participants.includes(currentAccount.value))
-const registrationUrl = computed(() => `${window.location.origin}/envelope/${envelope.value.envelopeId}`)
+const registrationUrl = computed(() => `${window.location.origin}/envelope/${envelope.value.envelopeId}/${route.params.networkId}`)
 
 async function participateInEnvelope () {
   isLoading.value = true
@@ -299,9 +301,16 @@ function checkValidEnvelope (envelopeId) {
   }
 }
 
-onMounted(async () => {
-  await fetchEnvelope()
-})
+watch(currentNetworkId, async () => {
+  if(currentNetworkId.value !== NetworkEnum.NO_NET){
+    await switchNetwork(Number(route.params.networkId))
+      .catch((err) => {
+        router.push({ path: `/network-not-found/${route.params.networkId}` })
+      })
+
+    await fetchEnvelope()
+  }
+}, { immediate: true })
 </script>
 
 <style lang="postcss" scoped>

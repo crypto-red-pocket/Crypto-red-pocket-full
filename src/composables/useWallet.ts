@@ -94,6 +94,7 @@ function validateAddress(address: string) {
 }
 
 async function switchNetwork(network: NetworkEnum) {
+  console.log(network)
   await provider.value
     .send("wallet_switchEthereumChain", [
       {

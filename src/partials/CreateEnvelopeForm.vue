@@ -121,7 +121,7 @@
 import BaseButton from './BaseButton.vue';
 import ConnectButton from './ConnectButton.vue';
 
-import { currentAccount } from '../composables/useWallet'
+import { currentAccount, currentNetworkId } from '../composables/useWallet'
 import { isOpen } from '../composables/useCreateEnvelopeForm'
 import { truncateAddress } from '../utils';
 import { ref } from 'vue'
@@ -149,7 +149,7 @@ async function create () {
 
   await getEnvelopesByAddress(currentAccount.value)
     .then(res =>{
-      router.push({ path: `envelope/${res[res.length - 1].envelopeId}` })
+      router.push({ path: `envelope/${res[res.length - 1].envelopeId}/${currentNetworkId.value}` })
     })
     .finally(() => {
       isLoading.value = false
