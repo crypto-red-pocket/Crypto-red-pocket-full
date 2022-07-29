@@ -37,7 +37,7 @@ To initialize the project, using the terminal, navigate to the folder containing
 
 <sup>
 
-| Contract Name          | Network | Testnet Address                            |
+| Contract          | Network | Testnet Address                            |
 | :--------------------- | :------ | :----------------------------------------- |
 | RedEnvelope            | Neon    | neonscan.org/address/0x8487D75c74dcAaF05a8cDf5EF1a27BbB59028D9e#contract       |
 | RedEnvelope            | Polygon | mumbai.polygonscan.com/address/0x2490015d3937277Cd2826705a971d5ef4cB0be9f#code | 
@@ -72,12 +72,6 @@ The multichain solution is available in the following blockchains:
 * Polygon
 * Rinkeby
 
-<br>
-## 🐞 **Known bugs**
-
-- Not available as mobile app.
-
-<br>
 <br>
 
 ## 💻 **Browser Support**
