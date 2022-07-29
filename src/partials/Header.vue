@@ -11,12 +11,6 @@
   
         <!-- Desktop Menu -->
         <aside class="hidden md:flex gap-10 text-lg">
-          <div
-            @click="switchNetwork(44787)"
-            class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer"
-          >
-            Connec
-          </div>
           <div class="hover:text-lightViolet my-auto hover:scale-105 cursor-pointer">
             <router-link
               to="/"

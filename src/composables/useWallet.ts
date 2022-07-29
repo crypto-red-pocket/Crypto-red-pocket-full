@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
 
 import { NetworkEnum } from './network.enum'
+import { NetworkSymbolEnum } from './networkSymbol.enum'
 
 const currentNetworkId = ref(0 as NetworkEnum)
 const currentAccount = ref('')
@@ -16,6 +17,10 @@ const provider = computed(() => {
       import.meta.env.VITE_INFURA_PROJECT_ID
     )
   }
+})
+
+const currentNetworkSymbol = computed(() => {
+  return NetworkSymbolEnum[currentNetworkId.value]
 })
 
 const isValidNetwork = computed(() => {
@@ -98,7 +103,7 @@ async function switchNetwork(network: NetworkEnum) {
   await provider.value
     .send("wallet_switchEthereumChain", [
       {
-        chainId: `0x${network.toString(16)}`,
+        chainId: ethers.utils.hexValue(Number(network)),
       },
     ])
   ;
@@ -107,6 +112,7 @@ async function switchNetwork(network: NetworkEnum) {
 export {
   currentAccount,
   currentNetworkId,
+  currentNetworkSymbol,
   isValidNetwork,
   switchNetwork,
   provider,

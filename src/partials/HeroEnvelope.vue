@@ -102,7 +102,7 @@
                 <sub class="text-lightRed uppercase tracking-widest font-light">
                   Total Prize Amt.
                 </sub>
-                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(envelope.totalTokenAmount.toNumber()) }} MATIC</p>
+                <p class="text-2xl pt-1">{{ ethers.utils.formatEther(envelope.totalTokenAmount.toNumber()) }} {{ currentNetworkSymbol }}</p>
               </div>
               <div>
                 <sub class="text-lightRed uppercase tracking-widest font-light">
@@ -155,7 +155,7 @@
               >
                 {{ truncateAddress(participant, 15) }}
               </td>
-              <td class="lg:px-5 text-center">{{ ethers.utils.formatEther(envelope.participantsPrize[index].toNumber()) }} MATIC</td>
+              <td class="lg:px-5 text-center">{{ ethers.utils.formatEther(envelope.participantsPrize[index].toNumber()) }} {{ currentNetworkSymbol }}</td>
             </tr>
         </tbody>
       </table>
@@ -178,7 +178,7 @@
 <script lang="ts" setup>
 import { ethers } from 'ethers'
 import { ref, computed, watch } from 'vue'
-import { currentAccount, currentNetworkId, switchNetwork } from '../composables/useWallet'
+import { currentAccount, currentNetworkId, switchNetwork, currentNetworkSymbol } from '../composables/useWallet'
 import BaseButton from './BaseButton.vue';
 import ConnectButton from './ConnectButton.vue';
 import { truncateAddress } from '../utils';

@@ -55,7 +55,7 @@
             class="rounded-lg text-darkViolet font-semibold text-lg"
             type="number"
             id="envelopeAmount"
-            placeholder="Amount in MATIC (Polygon)"
+            :placeholder="`Amount in ${currentNetworkSymbol}`"
           />
         </div>
       </section>
@@ -76,18 +76,46 @@
             placeholder="Type your answer here"
           />
         </div>
-
-        <div class="w-full flex flex-col gap-2 text-left">
-          <label
-            htmlFor="userWalletAddress"
-            class="text-lightRed uppercase tracking-widest font-light"
-          >
-            Connected Wallet Address
-          </label>
-          <div
-            class="text-2xl font-bold text-white/80"
-          >
-            {{ truncateAddress(currentAccount, 18) }}
+        <div class="grid grid-cols-3 gap-8">
+          <div class="col-span-1">
+            <div
+              htmlFor="maxParticipants"
+              class="text-lightRed uppercase tracking-widest font-light text-left pb-2"
+            >
+              Network
+            </div>
+            <select
+              class="
+                form-select appearance-none
+                block
+                text-white uppercase tracking-widest font-light
+              "
+              @change="setSelectedNetwork"
+              aria-label="Default select example"
+            >
+                <option
+                  v-for="(element, index) in ToArray(NetworkEnum).filter(element => element !== 'NO_NET')"
+                  :selected="currentNetworkId === Number(NetworkEnum[element])"
+                  :key="index"
+                  :value="NetworkEnum[element]"
+                >
+                  {{ element }}
+                </option>
+            </select>
+          </div>
+  
+          <div class="w-full flex flex-col gap-2 text-left col-span-2">
+            <label
+              htmlFor="userWalletAddress"
+              class="text-lightRed uppercase tracking-widest font-light"
+            >
+              Connected Wallet Address
+            </label>
+            <div
+              class="text-2xl font-bold text-white/80"
+            >
+              {{ truncateAddress(currentAccount, 18) }}
+            </div>
           </div>
         </div>
 
@@ -118,16 +146,19 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 import BaseButton from './BaseButton.vue';
 import ConnectButton from './ConnectButton.vue';
 
-import { currentAccount, currentNetworkId } from '../composables/useWallet'
+import { currentAccount, currentNetworkId, switchNetwork, currentNetworkSymbol } from '../composables/useWallet'
 import { isOpen } from '../composables/useCreateEnvelopeForm'
 import { truncateAddress } from '../utils';
-import { ref } from 'vue'
 import { createEnvelope, getEnvelopesByAddress } from './../composables/contracts/useEnvelopesContract'
 
-import { useRouter } from 'vue-router'
+import { NetworkEnum } from '../composables/network.enum'
+
 const router = useRouter()
 
 const isLoading = ref(false)
@@ -156,6 +187,19 @@ async function create () {
       isOpen.value = false
       cleanForm()
     })
+}
+
+function setSelectedNetwork (event) {
+  console.log(event.target.value)
+  switchNetwork(event.target.value)
+}
+
+// Helper
+function ToArray(enumme) {
+  const StringIsNumber = value => isNaN(Number(value)) === false;
+  return Object.keys(enumme)
+    .filter(StringIsNumber)
+    .map(key => enumme[key]);
 }
 
 function cleanForm() {
